@@ -2,7 +2,7 @@ from datetime import datetime
 import random
 
 
-def no_vinnigrette(first_date, second_date):
+def no_vinnigrete(first_date, second_date):
     """
     Generates a random date between two given dates.
 
@@ -31,7 +31,7 @@ if __name__ == '__main__':
     start_date = input("Enter first date (YYYY-MM-DD): ")
     end_date = input("Enter second date (YYYY-MM-DD): ")
 
-    random_date, weekday= no_vinnigrette(start_date, end_date)
+    random_date, weekday= no_vinnigrete(start_date, end_date)
 
     if weekday == 0:  # Monday is represented as value 0 in weekday().
         print("Ain't gettin' no vinaigrette today :(")
