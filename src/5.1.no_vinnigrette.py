@@ -33,6 +33,5 @@ if __name__ == '__main__':
 
     random_date, weekday= no_vinnigrete(start_date, end_date)
 
-    print(f"The random date is: {random_date}")
     if weekday == 0:  # Monday is represented as value 0 in weekday().
-        print("אין לי ויניגרט!")
+        print("Ain't gettin' no vinaigrette today :(")
