@@ -10,7 +10,7 @@ def interleave(*args:Iterable)->List:
     """
     return list(chain.from_iterable(zip(*args)))
 
-def interleave_generator(*args:Iterable)->Generator:
+def generator_interleave(*args:Iterable)->Generator:
     """
      Interleaves multiple iterables and yields elements one by one.
     :param args: One or more iterables to interleave.
