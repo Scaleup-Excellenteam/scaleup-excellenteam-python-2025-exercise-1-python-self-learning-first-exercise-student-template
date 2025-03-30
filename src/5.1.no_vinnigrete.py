@@ -6,8 +6,8 @@ def no_vinnigrete(first_date, second_date):
     """
     Generates a random date between two given dates.
 
-    :param start_date: A string in the format YYYY-MM-DD representing the start date.
-    :param end_date: A string in the format YYYY-MM-DD representing the end date.
+    :param first_date: A string in the format YYYY-MM-DD representing the start date.
+    :param second_date: A string in the format YYYY-MM-DD representing the end date.
     :return: A random date string in the format YYYY-MM-DD, and the weekday.
     """
     date_format = "%Y-%m-%d"
@@ -21,7 +21,7 @@ def no_vinnigrete(first_date, second_date):
 
         print(first_date_ordinal, second_date_ordinal)
 
-        random_date = datetime.fromordinal(random.randint(first_date_ordinal, second_date_ordinal))
+        new_random_date = datetime.fromordinal(random.randint(first_date_ordinal, second_date_ordinal))
 
         return random_date.strftime(date_format), random_date.weekday()
 
