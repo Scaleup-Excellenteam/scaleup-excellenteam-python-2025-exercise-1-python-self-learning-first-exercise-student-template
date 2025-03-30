@@ -2,7 +2,7 @@ from itertools import chain
 from typing import Iterable, List, Generator
 
 
-def communicating_vessels(*args:Iterable)->List:
+def interleave(*args:Iterable)->List:
     """
      Interleaves multiple iterables and returns a flattened list.
     :param args: Iterables to merge
@@ -10,7 +10,7 @@ def communicating_vessels(*args:Iterable)->List:
     """
     return list(chain.from_iterable(zip(*args)))
 
-def communicating_vessels_generator(*args:Iterable)->Generator:
+def interleave_generator(*args:Iterable)->Generator:
     """
      Interleaves multiple iterables and yields elements one by one.
     :param args: One or more iterables to interleave.
