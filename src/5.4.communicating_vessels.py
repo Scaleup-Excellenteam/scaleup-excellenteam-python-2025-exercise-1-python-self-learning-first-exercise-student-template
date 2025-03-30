@@ -1,4 +1,4 @@
-def communicating_vessels(*iterables):
+def interleave(*iterables):
     """
     Interleaves elements from multiple iterables and yields them one by one.
 
@@ -15,5 +15,5 @@ def communicating_vessels(*iterables):
 
 
 if __name__ == '__main__':
-    result = communicating_vessels('abc', [1, 2, 3], ('!', '@', '#'))
+    result = interleave('abc', [1, 2, 3], ('!', '@', '#'))
     print(list(result))
