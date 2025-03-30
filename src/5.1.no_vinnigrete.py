@@ -23,7 +23,7 @@ def no_vinnigrete(first_date, second_date):
 
         new_random_date = datetime.fromordinal(random.randint(first_date_ordinal, second_date_ordinal))
 
-        return random_date.strftime(date_format), random_date.weekday()
+        return new_random_date.strftime(date_format), random_date.weekday()
 
     except ValueError as e:
         print(f"Error: {e}")
