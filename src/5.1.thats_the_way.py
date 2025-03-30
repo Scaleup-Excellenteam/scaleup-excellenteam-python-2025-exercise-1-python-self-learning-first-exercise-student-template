@@ -17,11 +17,12 @@ def thats_the_way(directory_path: str) -> list[str]:
 
     except FileNotFoundError as e:
         print(f"Error: {e}")
+        return
 
 
 if __name__ == '__main__':
-    directory_relative_path = "./images"
-    directory_full_path = os.path.abspath(directory_relative_path)
+    DIRECTORY_RELATIVE_PATH = "./images"
+    DIRECTORY_FULL_PATH = os.path.abspath(DIRECTORY_RELATIVE_PATH )
 
-    deep_files = thats_the_way(directory_full_path)
-    print(deep_files)
+    contain_deep_files = thats_the_way(DIRECTORY_FULL_PATH)
+    print(contain_deep_files)
