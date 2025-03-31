@@ -19,10 +19,10 @@ def no_vinnigrete(first_date_str,second_date_str):
         random_date = first_date
     else:
         # convert both dates to ordinal numbers and exclude lower and upper bounds
-        ordinal_first = min(first_date.toordinal(), second_date.toordinal()) + 1
-        ordinal_second = max(first_date.toordinal(), second_date.toordinal()) - 1
+        ordinal_first = min(first_date.toordinal(), second_date.toordinal())
+        ordinal_second = max(first_date.toordinal(), second_date.toordinal())
 
-        random_date = rnd.randint(ordinal_first, ordinal_second)
+        random_date = rnd.randint(min(ordinal_first+1,ordinal_second-1), max(ordinal_first+1,ordinal_second-1))
         random_date = dt.datetime.fromordinal(random_date)
 
 
