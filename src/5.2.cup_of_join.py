@@ -15,7 +15,7 @@ def cup_of_join(*args, sep:str = "-")->List:
 
     for i,lst in enumerate(args):
         result.extend(lst)
-        if i < len(args)-1:
+        if i <= len(args)-1:
             result.append(sep)
 
     return result
