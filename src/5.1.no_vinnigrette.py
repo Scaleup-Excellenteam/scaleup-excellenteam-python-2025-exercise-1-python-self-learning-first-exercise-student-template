@@ -28,9 +28,9 @@ def no_vinnigrete(first_date_str,second_date_str):
     print(f"The random date is: {random_date}")
 
     if random_date.weekday() == MONDAY:
-        print("Today is Monday and i dont have vinnigrete")
+        print("Ain't gettin' no vinaigrette today :(")
     else:
-        print("Today is not Monday and i have vinnigrete")
+        print("Got vinaigrette today!")
 
 
 
