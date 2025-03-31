@@ -25,7 +25,7 @@ def no_vinnigrete(first_date_str,second_date_str):
         random_date = rnd.randint(ordinal_first, ordinal_second)
         random_date = dt.datetime.fromordinal(random_date)
 
-    print(f"The random date is: {random_date}")
+    # print(f"The random date is: {random_date}")
 
     if random_date.weekday() == MONDAY:
         print("Ain't gettin' no vinaigrette today :(")
