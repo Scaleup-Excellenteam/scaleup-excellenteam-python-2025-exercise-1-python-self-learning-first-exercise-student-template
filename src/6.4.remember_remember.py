@@ -6,7 +6,7 @@ column where the pixel intensity is `1`.
 The image is read using the Pillow library.
 """
 import os
-import pillow
+from PIL import Image
 
 def remember_remember(path):
     """
