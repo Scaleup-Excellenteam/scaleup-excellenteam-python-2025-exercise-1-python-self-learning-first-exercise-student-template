@@ -1,4 +1,4 @@
-def get_recipe_price(prices: dict[str, float], optionals=None, **items: int) -> float:
+def piece_of_cake(prices: dict[str, float], optionals=None, **items: int) -> float:
     """
     Gets a dictionary of ingredients and their prices for 100g, for each ingredient calculates the price to return the
     total price of the recipe.
@@ -21,6 +21,6 @@ def get_recipe_price(prices: dict[str, float], optionals=None, **items: int) -> 
 
 
 if __name__ == "__main__":
-    print(get_recipe_price({'chocolate': 18, 'milk': 8}, chocolate=200, milk=100))
-    print(get_recipe_price({'chocolate': 18, 'milk': 8}, optionals=['milk'], chocolate=300))
-    print(get_recipe_price({}))
+    print(piece_of_cake({'chocolate': 18, 'milk': 8}, chocolate=200, milk=100))
+    print(piece_of_cake({'chocolate': 18, 'milk': 8}, optionals=['milk'], chocolate=300))
+    print(piece_of_cake({}))
