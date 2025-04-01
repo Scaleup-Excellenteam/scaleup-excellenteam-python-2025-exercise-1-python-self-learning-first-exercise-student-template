@@ -1,3 +1,5 @@
+"""Calculates the total price for the ingredients needed for a recipe."""
+
 def piece_of_cake(prices: dict, optionals: list = None, **kwargs) -> int:
     """
     Calculates the total price for the ingredients needed for a recipe.

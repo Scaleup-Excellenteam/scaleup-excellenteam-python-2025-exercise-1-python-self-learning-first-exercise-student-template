@@ -1,3 +1,5 @@
+"""Groups elements of an iterable based on the result of applying func to each element."""
+
 from collections import defaultdict
 
 def group_by(func, iterable) -> dict:

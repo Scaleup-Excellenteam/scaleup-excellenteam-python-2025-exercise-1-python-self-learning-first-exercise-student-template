@@ -1,5 +1,4 @@
-from pyexpat.errors import messages
-
+"""Allows users to message each other."""
 
 class PostOffice:
     """A Post Office class. Allows users to message each other.

@@ -1,3 +1,5 @@
+"""Processes a given text to count the length of each unique word."""
+
 import re
 
 def long_cat_is_long(txt: str) -> dict:

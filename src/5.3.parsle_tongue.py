@@ -1,3 +1,6 @@
+"""Extracts hidden messages from a file using a generator. Messages are defined as lowercase English letters (at least 5 characters)
+    followed by an exclamation mark (!)."""
+
 import os
 import re
 

@@ -1,3 +1,5 @@
+"""Generates a random date between two given dates."""
+
 from datetime import datetime
 import random
 

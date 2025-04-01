@@ -1,3 +1,6 @@
+"""Decodes a hidden message from an image where each black pixel in a column
+    corresponds to the ASCII value of the row number."""
+
 import os
 from PIL import Image
 

@@ -1,4 +1,4 @@
-"""Module providing a function printing python version."""
+"""Module that provides a function to retrieve files from a directory whose names start with 'deep'."""
 
 import os
 

@@ -1,3 +1,5 @@
+"""Combine lists to one list and separate them with the char sep"""
+
 def cup_of_join(*args, sep=None) -> list:
     """
     Combine lists to one list and separate them with the char sep

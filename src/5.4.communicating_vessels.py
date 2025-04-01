@@ -1,3 +1,5 @@
+"""Interleaves elements from multiple iterables and returns them as a list."""
+
 def interleave(*iterables):
     """
     Interleaves elements from multiple iterables and returns them as a list.

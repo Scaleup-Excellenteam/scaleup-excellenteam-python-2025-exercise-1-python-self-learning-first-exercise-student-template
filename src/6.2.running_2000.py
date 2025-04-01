@@ -1,3 +1,5 @@
+"""Measures the execution time of a function when called with the given arguments."""
+
 import time
 
 def running_2000(f, *args, **kwargs):
