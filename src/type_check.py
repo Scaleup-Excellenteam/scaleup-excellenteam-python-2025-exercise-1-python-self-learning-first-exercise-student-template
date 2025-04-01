@@ -39,4 +39,4 @@ if __name__ == '__main__':
     try:
         print(times2(2.0))  # This should raise an exception because 2.0 is a float
     except TypeCheckException as e:
-        print(e
+        print(e)
