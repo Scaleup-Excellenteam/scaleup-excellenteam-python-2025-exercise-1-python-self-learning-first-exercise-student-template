@@ -23,17 +23,16 @@ def piece_of_cake(prices, optionals=None, **want_to_buy):
         piece_of_cake({'chocolate': 18, 'milk': 8}, chocolate=200, milk=100)
         # Returns the total price based on the prices and quantities.
     """
-    if len(prices) == 0:
-        return 0
-    the_final_price = 0
+    if not prices:
+        return 0.0
     if optionals is None:
-        for item, gr in want_to_buy:
-            the_final_price += (gr / 100) * prices.get(item, 0)
-    else:
-        for item, gr in want_to_buy:
-            if item not in optionals:
-                the_final_price += (gr / 100) * prices.get(item, 0)
-    return int(the_final_price)
+        optionals = []
+    total_price = 0.0
+    for item, grams in want_to_buy.items():
+        if item not in optionals:
+            price_per_100g = prices.get(item, 0)
+            total_price += (grams / 100) * price_per_100g
+    return total_price
 
 
 if __name__ == "__main__":
