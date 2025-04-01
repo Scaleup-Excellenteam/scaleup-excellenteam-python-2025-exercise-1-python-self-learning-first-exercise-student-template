@@ -1,0 +1,29 @@
+from typing import Any
+
+
+def cup_of_join(*lists: list[Any], sep: str = "-") -> list[Any]:
+    """
+    Takes any number of lists and returns a list of joined lists.
+    :param lists: lists of any type
+    :param sep: the seperator between the lists
+    :return: the combined list or empty list if there are no lists
+    """
+    if len(lists) == 0:
+        return []
+
+    res = []
+
+    # Adds the flattened list to res then the sep
+    for lst in lists:
+        res.extend(lst)
+        res.append(sep)
+
+    # Deletes the last sep                  !!!! Exercise asks like this, test asks differently, simply delete [:-1] if needed !!!!
+    return res[:-1]
+
+
+if __name__ == '__main__':
+    print(cup_of_join([1, 2], [8], [9, 5, 6], sep='@'))
+    print(cup_of_join([1, 2], [8], [9, 5, 6]))
+    print(cup_of_join([1]))
+    print(cup_of_join())
