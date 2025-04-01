@@ -2,13 +2,16 @@ import os
 import re
 
 
-def find_secret_messages(path: str) -> list[str]:
+def parsle_tongue(path: str = None) -> list[str]:
     """
     Searches for secret messages in a binary opened file, the message needs to be at least 5 characters long and ends
     with an exclamation mark.
     :param path: path to file
     :return: the secret messages
     """
+    if path is None:
+        relative_path = "../../Notebooks/content/week05/resources/logo.jpg"
+        path = os.path.abspath(relative_path)
     secret_messages = []
     buffer = b""
 
@@ -35,7 +38,5 @@ def find_secret_messages(path: str) -> list[str]:
     return secret_messages
 
 
-if __name__ == "__main__":
-    relative_path = "../../Notebooks/content/week05/resources/logo.jpg"
-    full_path = os.path.abspath(relative_path)
-    print(find_secret_messages(full_path))
+if __name__ == '__main__':
+    print(parsle_tongue())
