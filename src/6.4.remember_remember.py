@@ -13,7 +13,7 @@ def remember_remember(image_path: str) -> str:
         img = Image.open(image_path).convert("RGB")
     except FileNotFoundError:
         print(f"Error: The file '{image_path}' was not found.")
-    return ""
+        return ""
 
     cols, rows = img.size
     pixels = img.load()
