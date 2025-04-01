@@ -1,7 +1,7 @@
 from argparse import ArgumentError
 import time
 
-def running_2000(func,*name):
+def running_2000(func,*args):
     """
         Measures the execution time of a given function in seconds.
         Catches and prints ArgumentError messages if raised during execution.
