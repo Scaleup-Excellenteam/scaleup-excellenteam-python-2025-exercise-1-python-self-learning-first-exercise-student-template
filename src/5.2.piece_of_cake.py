@@ -10,22 +10,13 @@ def piece_of_cake(prices: dict, optionals: list = None, **kwargs) -> int:
     all_ingredients = []
     recipe_price = 0
     try:
-        if optionals:
-            for ingredient in optionals:
-                if ingredient not in prices:
-                    raise KeyError(f"The ingredient {ingredient} was not found in prices.")
-                all_ingredients.append(ingredient)
-
         if kwargs:
             for ingredient, amount in kwargs.items():
                 if ingredient not in prices:
                     raise KeyError(f"The ingredient {ingredient} was not found in prices.")
-                recipe_price += (amount // 100) * prices[ingredient]  # The return value is int, not float.
-                all_ingredients.append(ingredient)
-
-        for product in prices:
-            if product not in all_ingredients:
-                raise ValueError(f"The product '{product}' was not used in either optionals or amounts.")
+                if not ingredient in optionals:
+                    recipe_price += (amount / 100) * prices[ingredient]
+                    all_ingredients.append(ingredient)
 
         return recipe_price
 
@@ -37,5 +28,9 @@ def piece_of_cake(prices: dict, optionals: list = None, **kwargs) -> int:
         return None
 
 if __name__ == '__main__':
-    recipe_price = piece_of_cake({'chocolate': 18, 'milk': 8}, optionals=['milk'], chocolate=300)
+    recipe_price = piece_of_cake(
+        prices={'bread': 25, 'jam': 10},
+        optionals=[],
+        bread=100,
+        jam=50)
     print(recipe_price)
