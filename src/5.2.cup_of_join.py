@@ -1,7 +1,7 @@
 from typing import Union, Any
 
 
-def join(*lists: list[Any], sep: str = "-") -> Union[None, list[Any]]:
+def cup_of_join(*lists: list[Any], sep: str = "-") -> Union[None, list[Any]]:
     """
     Takes any number of lists and returns a list of joined lists.
     :param lists: lists of any type
@@ -19,11 +19,12 @@ def join(*lists: list[Any], sep: str = "-") -> Union[None, list[Any]]:
         res.append(sep)
 
     # Deletes the last sep
-    return res[:-1]
+    res.pop()
+    return res
 
 
 if __name__ == '__main__':
-    print(join([1, 2], [8], [9, 5, 6], sep='@'))
-    print(join([1, 2], [8], [9, 5, 6]))
-    print(join([1]))
-    print(join())
+    print(cup_of_join([1, 2], [8], [9, 5, 6], sep='@'))
+    print(cup_of_join([1, 2], [8], [9, 5, 6]))
+    print(cup_of_join([1]))
+    print(cup_of_join())
