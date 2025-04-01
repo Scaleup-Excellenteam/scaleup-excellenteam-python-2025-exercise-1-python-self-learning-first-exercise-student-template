@@ -13,6 +13,10 @@ def no_vinnigrete(first_date, second_date):
     date_format = "%Y-%m-%d"
 
     try:
+
+        if not first_date or not second_date:
+            raise ValueError("Both dates must be provided.")
+        
         first_date_ordinal = datetime.strptime(first_date, date_format).toordinal()
         second_date_ordinal = datetime.strptime(second_date, date_format).toordinal()
 
