@@ -40,12 +40,12 @@ class PostOffice:
             user_box.append(message_details)
         return self.message_id
 
-    def read_inbox(self, username: str, N: int = -1) -> list:
+    def read_inbox(self, username: str, N: int = None) -> list:
         """
         Returns the first N messages from the user's inbox.
 
         :param str username: The username that we are searching for.
-        :param int N: The number of messages to show (default is all messages (-1)).
+        :param int N: The number of messages to show (default is all messages).
         :return: A list of messages from the user's inbox.
         :rtype: list
         :raises KeyError: if the username does not exist.
@@ -58,7 +58,7 @@ class PostOffice:
         ret = []
 
         # If N isn't provided or bigger than the user's inbox, it will show all unread messages so marked as the length.
-        if N == -1 or N > len(inbox):
+        if N == None or N > len(inbox):
             n = len(inbox)
         else:
             n = N
