@@ -30,21 +30,20 @@ def no_vinnigrete(first_date, second_date):
         if new_random_ordinal < 1:
             raise ValueError("Invalid ordinal value.")
 
-        new_random_date = datetime.fromordinal(random.randint(first_date_ordinal, second_date_ordinal))
+        new_random_date = datetime.fromordinal(new_random_ordinal)
         weekday = new_random_date.weekday()
 
         if weekday == 0:  # Monday
             print("Ain't gettin' no vinaigrette today :(")
 
-        return new_random_ordinal
+        return new_random_date.strftime(date_format), weekday
 
     except ValueError as e:
         print(f"Error: {e}")
-        return None
+        return None, None
 
 if __name__ == '__main__':
     start_date = input("Enter first date (YYYY-MM-DD): ")
     end_date = input("Enter second date (YYYY-MM-DD): ")
 
     no_vinnigrete(start_date, end_date)
-
