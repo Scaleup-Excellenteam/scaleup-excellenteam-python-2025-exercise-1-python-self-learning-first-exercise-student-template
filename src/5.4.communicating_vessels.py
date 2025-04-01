@@ -14,7 +14,7 @@ def generator_interleave(*input_iter):
     """
     for items in zip(*input_iter):
         for item in items:
-            yield item
+            yield from item
 
 def interleave(*input_iter):
     """

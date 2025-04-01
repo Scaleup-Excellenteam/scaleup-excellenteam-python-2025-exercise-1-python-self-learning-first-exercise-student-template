@@ -26,7 +26,7 @@ def cup_of_join(*lst, sep=''):
     for item in lst:
         for num in item:
             new_lst.append(num)
-        if not sep =='':
+        if  sep !='':
             new_lst.append(sep)
     return new_lst
 

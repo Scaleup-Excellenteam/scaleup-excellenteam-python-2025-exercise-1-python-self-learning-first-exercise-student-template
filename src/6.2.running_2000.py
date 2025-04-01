@@ -27,4 +27,3 @@ def running_2000(func,*parameters,**kwargs):
 
 if __name__ == "__main__":
     print(running_2000(print, "Hello"))
-    print(running_2000("Hi {name}".format, name="Bug"))
