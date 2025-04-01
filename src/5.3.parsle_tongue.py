@@ -40,5 +40,4 @@ def parsle_tongue():
         print(f"Error: {path} not found")
         
 if __name__ == '__main__':
-    for m in parsle_tongue():
-        print(m)
+    parsle_tongue()
