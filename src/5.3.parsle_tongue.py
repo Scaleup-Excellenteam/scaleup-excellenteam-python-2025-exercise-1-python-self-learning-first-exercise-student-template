@@ -1,5 +1,11 @@
-import os
+"""
+This module defines the `parsle_tongue` function, which extracts hidden messages 
+from a binary file (`logo.jpg`). The function looks for sequences of at least 
+5 lowercase letters ending with an exclamation mark (`!`), and yields those messages.
 
+The file is read in chunks of 1024 bytes, and any file errors (e.g., file not found) are handled.
+"""
+import os
 
 BUFFER_SIZE = 1024
 def parsle_tongue():
@@ -33,10 +39,7 @@ def parsle_tongue():
 
     except FileNotFoundError:
         print(f"Error: {path} not found")
-        return None
-
-
+        
 if __name__ == '__main__':
     for m in parsle_tongue():
         print(m)
-
