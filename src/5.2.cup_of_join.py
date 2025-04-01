@@ -13,22 +13,20 @@ Example:
 """
 from typing import List
 
-def cup_of_join(*args, sep: str = "") -> List:
+def cup_of_join(*args, sep:str = "")->List:
     """
-    Flatten multiple lists into one list with an optional separator between lists.
-    Args:
-        *args: Unlimited number of lists to be flattened.
-        sep (str): Separator to insert between the flattened lists (default is "").
-    Returns:
-        List: A flattened list with separators inserted between each input list.
+    :param args: unlimited number of lists
+    :param sep: seperator to add between lists
+    :return: flatten list of lists with sep between each list
     """
     if not args:
         return None
 
     result = []
-    for i, lst in enumerate(args):
+
+    for i,lst in enumerate(args):
         result.extend(lst)
-        if i < len(args) - 1 and sep != "":  # Ensure the separator is only added between lists
+        if i <= len(args)-1 and sep != "":
             result.append(sep)
 
     return result
