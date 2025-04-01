@@ -8,6 +8,7 @@ The file is read in chunks of 1024 bytes, and any file errors (e.g., file not fo
 import os
 
 BUFFER_SIZE = 1024
+
 def parsle_tongue():
     """
     Extracts hidden messages from a binary file ('logo.jpg').
@@ -38,6 +39,7 @@ def parsle_tongue():
 
     except FileNotFoundError:
         print(f"Error: {path} not found")
-        
+
 if __name__ == '__main__':
-    parsle_tongue()
+    for message in parsle_tongue():
+        print(message)
