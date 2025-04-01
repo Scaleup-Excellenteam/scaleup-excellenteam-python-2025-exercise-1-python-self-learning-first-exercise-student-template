@@ -32,7 +32,7 @@ def piece_of_cake(prices: Dict[str, float] = None, optionals: List[str] = None, 
 
     try:
         # Compute the weighted sum, excluding optional keys
-        return float(sum((kwargs[name] / 100) * prices[name] for name in kwargs if name not in optionals))
+        return float(sum((kwargs[name] / 100) * prices[name] for name,_ in kwargs.items() if name not in optionals))
     except KeyError:
         print("KeyError: One of the provided keys does not exist in the prices dictionary.")
         return None
