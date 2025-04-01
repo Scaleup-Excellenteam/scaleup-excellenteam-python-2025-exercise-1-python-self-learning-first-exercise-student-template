@@ -1,3 +1,7 @@
+"""
+This module provides a function `running_2000` that measures the execution 
+time of a given function in seconds. It also handles errors gracefully.
+"""
 from argparse import ArgumentError
 import time
 
