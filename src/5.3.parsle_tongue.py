@@ -10,9 +10,10 @@ def parsle_tongue(path: str = None) -> list[str]:
     :return: the secret messages
     """
     if path is None:
-        relative_path = "../../Notebooks/content/week05/resources/logo.jpg"
-        path = os.path.abspath(relative_path)
-        
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        project_root = os.path.dirname(os.path.dirname(current_dir))
+        path = os.path.join(project_root, "Notebooks", "content", "week05", "resources", "logo.jpg")
+
     secret_messages = []
     buffer = b""
 

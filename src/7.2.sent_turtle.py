@@ -51,24 +51,20 @@ class PostOffice:
         :raises KeyError: if the username does not exist.
         """
         if username not in self.boxes:
-            raise KeyError(f"Username doesn't exist.")
+            return []
 
         inbox = self.boxes[username]
-        unread = [message for message in inbox if message['read'] == False]
-        ret = []
+        if N is None:
+            N = len(inbox)
 
-        # If N isn't provided or bigger than the user's inbox, it will show all unread messages so marked as the length.
-        if N == None or N > len(inbox):
-            n = len(inbox)
-        else:
-            n = N
+        if N < 0:
+            N = len(inbox)
 
-        # Change the read status from False to True
-        for message in unread[:n]:
-            ret.append(message)
+        messages_to_read = inbox[:N]
+        for message in messages_to_read:
             message['read'] = True
 
-        return ret
+        return messages_to_read
 
     def search_inbox(self, username: str, keyword: str) -> list:
         """
@@ -81,12 +77,13 @@ class PostOffice:
         :raises KeyError: if the username does not exist.
         """
         if username not in self.boxes:
-            raise KeyError(f"Username doesn't exist.")
+            return []
 
         inbox = self.boxes[username]
+        keyword = keyword.lower()
 
-        # Checks messages body and adds to the list if it contains the keyword. (There is no title?)
-        return [message for message in inbox if keyword.lower() in message['body'].lower()]
+        # Search in message body
+        return [message for message in inbox if keyword in message['body'].lower()]
 
 
 if __name__ == '__main__':

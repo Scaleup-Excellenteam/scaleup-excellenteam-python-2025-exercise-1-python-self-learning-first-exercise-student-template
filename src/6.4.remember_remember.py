@@ -3,13 +3,18 @@ import os
 from PIL import Image
 
 
-def remember_remember(path: str = "code.png") -> str:
+def remember_remember(path: str = None) -> str:
     """
     Checks for black dots in the image of the given path, and converts the row to its ascii equivalent, the order of
     the word is by columns.
     :param path: path to the image
     :return: the message
     """
+    if path is None:
+        # Get the directory where the current file is located
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        path = os.path.join(current_dir, "code.png")
+
     try:
         # Open image as binary to check black / white
         img = Image.open(path)

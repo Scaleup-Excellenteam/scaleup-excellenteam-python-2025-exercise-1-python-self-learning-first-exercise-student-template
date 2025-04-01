@@ -7,12 +7,17 @@ def interleave(*iters: Iterable[Any]) -> list[Any]:
     :param iters: Any type and number of iterables
     :return: the combined list
     """
-    merged = []
-    min_length = min(len(i) for i in iters)  # type: ignore
+    if not iters:
+        return []
 
-    for x in range(min_length):
-        for it in iters:
-            merged.append(it[x])  # type: ignore
+    merged = []
+    max_length = max(len(i) for i in iters)  # type: ignore
+
+    for i in range(max_length):
+        # For each iterator, add its element if it has one
+        for iterator in iters:
+            if i < len(iterator):  # type: ignore
+                merged.append(iterator[i])  # type: ignore
 
     return merged
 
@@ -23,13 +28,18 @@ def generator_interleave(*iters: Iterable[Any]) -> Iterable[Any]:
     :param iters: Any type and number of iterables
     :return: generator that yields from one iterable by index
     """
-    min_length = min(len(i) for i in iters)  # type: ignore
+    if not iters:
+        return
 
-    for x in range(min_length):
-        for it in iters:
-            yield it[x]  # type: ignore
+    max_length = max(len(i) for i in iters)  # type: ignore
+
+    for i in range(max_length):
+        # For each iterator, yield its element if it has one
+        for iterator in iters:
+            if i < len(iterator):  # type: ignore
+                yield iterator[i]  # type: ignore
 
 
-if __name__ == "__main__":
-    print(interleave('abc', [1, 2, 3], ('!', '@', '#')))
-    print(list(generator_interleave('abc', [1, 2, 3], ('!', '@', '#'))))
+if __name__ == '__main__':
+    print(interleave('ab', [1, 2, 3], ('@', '%')))
+    print(list(generator_interleave('ab', [1, 2, 3], ('@', '%'))))
