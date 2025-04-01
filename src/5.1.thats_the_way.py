@@ -1,4 +1,5 @@
 import os
+"""Module that provides a function to retrieve files from a directory whose names start with 'deep'."""
 
 def thats_the_way(directory_path: str) -> list[str]:
     """
