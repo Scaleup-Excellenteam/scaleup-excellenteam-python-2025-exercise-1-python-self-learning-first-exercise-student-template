@@ -23,7 +23,6 @@ def piece_of_cake(prices: Dict[str, float] = None, optionals: List[str] = None, 
         optionals (List[str]): A list of keys to ignore when calculating the weighted sum. Defaults to `None`.
         **kwargs: Arbitrary keyword arguments, where each key corresponds to an item in `prices`, 
                   and each value represents the percentage to multiply by the corresponding value in `prices`.
-
     Returns:
         float: The computed weighted sum or `None` if a `KeyError` occurs.
     """
@@ -35,7 +34,7 @@ def piece_of_cake(prices: Dict[str, float] = None, optionals: List[str] = None, 
 
     try:
         # Compute the weighted sum, excluding optional keys
-        return float(sum((kwargs[name] / 100) * prices[name] for name in kwargs if name not in optionals))
+        return float(sum((value / 100) * prices[name] for name,value in kwargs.items() if name not in optionals))
     except KeyError:
         print("KeyError: One of the provided keys does not exist in the prices dictionary.")
         return None
