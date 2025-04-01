@@ -17,7 +17,7 @@ def thats_the_way(directory_path: str) -> list[str]:
 
     except FileNotFoundError as e:
         print(f"Error: {e}")
-        return
+        return []
 
 
 if __name__ == '__main__':

@@ -29,5 +29,5 @@ def cup_of_join(*args, sep=None) -> list:
         return None
 
 if __name__ == '__main__':
-    lst = cup_of_join([1, 2], ['a', 'b'], [True])
-    print(lst)
+    joined_list = cup_of_join([1, 2], [8], [9, 5, 6], sep='@')
+    print(joined_list)

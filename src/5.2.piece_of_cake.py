@@ -25,9 +25,9 @@ def piece_of_cake(prices: dict, optionals: list = None, **kwargs) -> int:
         return None
 
 if __name__ == '__main__':
-    recipe_price = piece_of_cake(
+    total_price = piece_of_cake(
         prices={'bread': 25, 'jam': 10},
         optionals=[],
         bread=100,
         jam=50)
-    print(recipe_price)
+    print(total_price)
