@@ -12,6 +12,7 @@ def parsle_tongue(path: str = None) -> list[str]:
     if path is None:
         relative_path = "../../Notebooks/content/week05/resources/logo.jpg"
         path = os.path.abspath(relative_path)
+        
     secret_messages = []
     buffer = b""
 

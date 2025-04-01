@@ -17,7 +17,7 @@ def interleave(*iters: Iterable[Any]) -> list[Any]:
     return merged
 
 
-def interleave_gen(*iters: Iterable[Any]) -> Iterable[Any]:
+def generator_interleave(*iters: Iterable[Any]) -> Iterable[Any]:
     """
     Gets multiple iterables and yield from one of them by index, 1st of all iterables, then 2nd and so on.
     :param iters: Any type and number of iterables
@@ -32,4 +32,4 @@ def interleave_gen(*iters: Iterable[Any]) -> Iterable[Any]:
 
 if __name__ == "__main__":
     print(interleave('abc', [1, 2, 3], ('!', '@', '#')))
-    print(list(interleave_gen('abc', [1, 2, 3], ('!', '@', '#'))))
+    print(list(generator_interleave('abc', [1, 2, 3], ('!', '@', '#'))))
