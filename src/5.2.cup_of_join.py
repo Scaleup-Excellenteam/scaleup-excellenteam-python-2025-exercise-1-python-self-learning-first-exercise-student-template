@@ -33,4 +33,3 @@ def cup_of_join(*lst, sep=''):
 
 if __name__ == "__main__":
     print(cup_of_join([1, 2], [8], [9, 5, 6], sep='@'))
-

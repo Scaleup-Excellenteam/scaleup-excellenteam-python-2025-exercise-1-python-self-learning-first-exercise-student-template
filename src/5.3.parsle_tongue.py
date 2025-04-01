@@ -39,4 +39,3 @@ def parsle_tongue():
 if __name__ == "__main__":
     for parse in parsle_tongue():
         print(parse)
-

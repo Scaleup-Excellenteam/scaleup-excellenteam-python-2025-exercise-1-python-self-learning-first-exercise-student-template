@@ -102,5 +102,3 @@ class PostOffice:
             msg for msg in self.boxes[user]
             if str_search in msg['body'].lower() or str_search in msg['title'].lower()
         ]
-
-

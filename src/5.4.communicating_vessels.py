@@ -42,4 +42,3 @@ def interleave(*input_iter):
 if __name__ == "__main__":
     interleave()
     generator_interleave()
-

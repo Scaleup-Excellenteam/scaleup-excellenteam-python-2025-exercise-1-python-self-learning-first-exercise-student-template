@@ -35,4 +35,3 @@ def thats_the_way(your_path):
 
 if __name__ == "__main__":
     thats_the_way("")
-

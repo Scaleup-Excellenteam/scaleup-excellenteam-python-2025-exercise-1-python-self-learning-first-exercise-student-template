@@ -37,4 +37,3 @@ def piece_of_cake(prices, optionals=None, **want_to_buy):
 
 if __name__ == "__main__":
     print(piece_of_cake({'chocolate': 18, 'milk': 8}, chocolate=200, milk=100))
-
