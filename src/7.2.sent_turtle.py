@@ -25,10 +25,13 @@ class PostOffice:
     def send_message(self, sender, recipient,message_title, message_body, urgent=False):
         """Send a message to a recipient.
         Adds another key to the message details that indicates if a message was read.
+        Adds another key to the message details to store the title message.
+        Adds another argument for message title.
         Includes a try-except block to check if the recipient exists in the boxes.
 
         :param str sender: The message sender's username.
         :param str recipient: The message recipient's username.
+        :param str message_title: The title of the message.
         :param str message_body: The body of the message.
         :param urgent: The urgency of the message.
         :type urgent: bool, optional
@@ -58,7 +61,7 @@ class PostOffice:
         """Retrieve unread messages from a user's inbox and mark them as read.
 
         :param str user_name: The username whose inbox is being accessed.
-        :param int N: The maximum number of unread messages to retrieve.
+        :param int n: The maximum number of unread messages to retrieve.
                       If N=0, all unread messages are returned.
         :return: A list of unread messages, each represented as a dictionary.
         :rtype: list[dict]
@@ -88,7 +91,7 @@ class PostOffice:
         """Search for messages containing a specific substring in a user's inbox.
 
         :param str user_name: The username whose inbox is being searched.
-        :param str string: The substring to search for within message bodies.
+        :param str string: The substring to search for within message bodies and titles.
         :return: A list of messages that contain the search string.
         :rtype: list[dict]
         :raises KeyError: If the user does not exist.
