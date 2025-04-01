@@ -20,4 +20,3 @@ def running_2000(f, *args, **kwargs):
 
 if __name__ == '__main__':
     running_2000(print, "Hello")
-
