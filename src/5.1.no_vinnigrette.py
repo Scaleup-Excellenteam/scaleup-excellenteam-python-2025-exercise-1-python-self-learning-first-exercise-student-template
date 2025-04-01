@@ -16,7 +16,7 @@ def no_vinnigrete(first_date, second_date):
 
         if not first_date or not second_date:
             raise ValueError("Both dates must be provided.")
-        
+
         first_date_ordinal = datetime.strptime(first_date, date_format).toordinal()
         second_date_ordinal = datetime.strptime(second_date, date_format).toordinal()
 
@@ -24,8 +24,10 @@ def no_vinnigrete(first_date, second_date):
             raise ValueError("The first date must be before the second date.")
 
         new_random_date = datetime.fromordinal(random.randint(first_date_ordinal, second_date_ordinal))
+        weekday = new_random_date.weekday()
 
-        return new_random_date.strftime(date_format), new_random_date.weekday()
+        if weekday == 0:  # Monday
+            print("Ain't gettin' no vinaigrette today :(")
 
     except ValueError as e:
         print(f"Error: {e}")
@@ -35,7 +37,5 @@ if __name__ == '__main__':
     start_date = input("Enter first date (YYYY-MM-DD): ")
     end_date = input("Enter second date (YYYY-MM-DD): ")
 
-    random_date, weekday= no_vinnigrete(start_date, end_date)
+    no_vinnigrete(start_date, end_date)
 
-    if weekday == 0:  # Monday is represented as value 0 in weekday().
-        print("Ain't gettin' no vinaigrette today :(")
