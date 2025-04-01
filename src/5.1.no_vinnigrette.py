@@ -36,9 +36,11 @@ def no_vinnigrete(first_date, second_date):
         if weekday == 0:  # Monday
             print("Ain't gettin' no vinaigrette today :(")
 
+        return new_random_ordinal
+
     except ValueError as e:
         print(f"Error: {e}")
-        return None, None
+        return None
 
 if __name__ == '__main__':
     start_date = input("Enter first date (YYYY-MM-DD): ")
