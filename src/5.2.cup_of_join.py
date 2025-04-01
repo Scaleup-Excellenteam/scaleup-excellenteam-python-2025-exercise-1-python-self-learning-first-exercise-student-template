@@ -2,7 +2,7 @@
 
 from typing import List
 
-def cup_of_join(*args, sep:str = "-")->List:
+def cup_of_join(*args, sep:str = "")->List:
     """
     :param args: unlimited number of lists
     :param sep: seperator to add between lists
@@ -15,7 +15,7 @@ def cup_of_join(*args, sep:str = "-")->List:
 
     for i,lst in enumerate(args):
         result.extend(lst)
-        if i <= len(args)-1:
+        if i <= len(args)-1 and sep != "":
             result.append(sep)
 
     return result
