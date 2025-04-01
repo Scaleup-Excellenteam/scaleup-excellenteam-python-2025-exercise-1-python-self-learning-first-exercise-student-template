@@ -15,7 +15,7 @@ def group_by(function, iterable):
         iterable (iterable): A collection of elements to be grouped.
     Returns:
         dict: A dictionary where keys are function outputs and values are lists of elements
-              that produced the same output.
+        that produced the same output.
     """
     result = {}
     for item in iterable:
@@ -29,4 +29,3 @@ def group_by(function, iterable):
 
 if __name__ == '__main__':
     print(group_by(len, ["hi", "bye", "yo", "try"]))
-
