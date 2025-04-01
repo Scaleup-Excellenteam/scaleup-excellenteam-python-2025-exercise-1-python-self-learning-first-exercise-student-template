@@ -1,7 +1,7 @@
 import datetime, random
 
 
-def no_vinnigrette(input_date1, input_date2) -> datetime:
+def no_vinnigrete(input_date1, input_date2) -> datetime:
     """
     Gets 2 dates from the user and returns a random date between them.
     :return: Random date.
@@ -29,4 +29,4 @@ def no_vinnigrette(input_date1, input_date2) -> datetime:
 if __name__ == '__main__':
     ask1 = input("Please enter the first date in YYYY-MM-DD format: ")
     ask2 = input("Please enter the second date in YYYY-MM-DD format: ")
-    print(no_vinnigrette(ask1, ask2))
+    print(no_vinnigrete(ask1, ask2))
