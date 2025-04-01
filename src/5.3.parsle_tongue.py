@@ -36,7 +36,6 @@ def parsle_tongue():
 
                 chunk = file.read(BUFFER_SIZE)
 
-
     except FileNotFoundError:
         print(f"Error: {path} not found")
         
