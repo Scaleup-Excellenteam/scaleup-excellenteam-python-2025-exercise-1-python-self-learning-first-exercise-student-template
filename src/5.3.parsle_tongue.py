@@ -1,41 +1,42 @@
+"""
+Module to extract secret messages from a binary file by reading its content.
+
+The secret messages are sequences of lowercase letters followed by an exclamation mark ('!').
+Each message must contain at least five lowercase letters. This function processes a binary file,
+searching for patterns that match these secret messages and yields them one by one.
+
+Raises:
+    FileNotFoundError: If the specified file does not exist.
+"""
 def parsle_tongue():
     """
-        Extracts secret messages from a file by reading its binary content.
-        The secret messages are sequences of lowercase letters followed by an exclamation mark,
-        and the message must have at least five lowercase letters.
+    Module to extract secret messages from a binary file by reading its content.
 
-        Parameters:
-        file (str): The path to the file from which to extract the secret messages.
+    The secret messages are sequences of lowercase letters followed by an exclamation mark ('!').
+    Each message must contain at least five lowercase letters. This function processes a binary file,
+    searching for patterns that match these secret messages and yields them one by one.
 
-        Yields:
-        str: The extracted secret messages that match the pattern.
-        """
+    Raises:
+        FileNotFoundError: If the specified file does not exist.
+    """
     try:
-        # Open the file in binary mode
-        with open("/Users/basharyamin/PycharmProjects/exercise-1-python-self-learning-Basharyam/src/logo.jpg", "rb") as file:
-            # Read the file and decode it as ASCII, ignoring errors
+        with open("logo.jpg", "rb") as file:
             binary_data = file.read().decode("ascii", errors="ignore")
             new_str=""
-
-            # Iterate through each character in the decoded data
-            for bin in binary_data:
-                if bin.islower():
-                    new_str += bin
-                elif bin == '!':
+            for bin_text in binary_data:
+                if bin_text.islower():
+                    new_str += bin_text
+                elif bin_text == '!':
                     if len(new_str) >= 5:
                         yield new_str
                     new_str = ""
                 else:
                     new_str = ""
-
     except FileNotFoundError:
         print("No such file or directory: ", file)
 
 
-
-def main():
+if __name__ == "__main__":
     for parse in parsle_tongue():
         print(parse)
 
-if __name__ == "__main__":
-    main()

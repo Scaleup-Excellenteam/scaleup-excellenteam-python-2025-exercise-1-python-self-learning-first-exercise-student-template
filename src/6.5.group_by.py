@@ -1,23 +1,23 @@
-
+"""
+Module: group_by_utility
+This module provides a function to group elements from an iterable based on
+the result of applying a given function to each element.
+"""
 def group_by(func,iter1):
     """
-        Groups elements in an iterable based on the result of applying a function to each element.
+    Groups elements in an iterable based on the result of applying a function to each element.
 
-        Parameters:
+    Parameters:
         func (function): A function that will be applied to each element in the iterable.
-        iter (iterable): The iterable containing the elements to group.
+        iter1 (iterable): The iterable containing the elements to group.
 
-        Returns:
-        None: This function prints a dictionary where keys are the results of applying `func` to elements,
-        and values are lists of elements that have the same result.
-        """
-
+    Returns:
+        dict: A dictionary where keys are the results of applying `func` to elements,
+              and values are lists of elements that have the same result.
+    """
     new_dic={func(word):[mila for mila in iter1 if func(word)==func(mila)] for word in iter1}
     return new_dic
 
-def main():
-    print(group_by(len, ["hi", "bye", "yo", "try"]))
-
 
 if __name__ == "__main__":
-    main()
+    print(group_by(len, ["hi", "bye", "yo", "try"]))
