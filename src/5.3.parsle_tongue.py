@@ -25,7 +25,7 @@ def parsle_tongue():
                         buffer = ""
 
                     if len(buffer) >= 5 and buffer[-1] == '!':
-                        yield buffer
+                        yield buffer[:-1]
                         buffer = ""
 
                 chunk = file.read(BUFFER_SIZE)
