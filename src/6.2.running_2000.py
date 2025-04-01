@@ -1,7 +1,7 @@
 import time
 
 
-def timer(f, *params1, **params2):
+def running_2000(f, *params1, **params2):
     """
     Check how long it took to run a function, starts a timer before, calls a function and then stops the timer.
     :param f: the function to check duration
@@ -15,6 +15,6 @@ def timer(f, *params1, **params2):
 
 
 if __name__ == "__main__":
-    print(timer(print, "Hello"))
-    print(timer(zip, [1, 2, 3], [4, 5, 6]))
-    print(timer("Hi {name}".format, name="Bug"))
+    print(running_2000(print, "Hello"))
+    print(running_2000(zip, [1, 2, 3], [4, 5, 6]))
+    print(running_2000("Hi {name}".format, name="Bug"))
