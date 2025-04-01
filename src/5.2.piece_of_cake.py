@@ -1,7 +1,7 @@
 
 from typing import Dict,List
 
-def piece_of_cake(prices:Dict[str,float] ={}  ,optionals:List[str] = [],**kwargs) -> float:
+def piece_of_cake(prices:Dict[str,float] ={}  ,optionals:List[str] = None,**kwargs) -> float:
     """
     Computes a weighted sum of values from the given dictionary, based on percentages provided
     in keyword arguments, while ignoring optional keys.
