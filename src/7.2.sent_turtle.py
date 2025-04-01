@@ -14,7 +14,7 @@ class PostOffice:
         self.message_id = 0
         self.boxes = {user: [] for user in usernames}
 
-    def send_message(self, sender, recipient, message_body, urgent=False):
+    def send_message(self, sender, recipient, title, message_body, urgent=False):
         """Send a message to a recipient.
 
         :param str sender: The message sender's username.
@@ -30,6 +30,7 @@ class PostOffice:
         self.message_id = self.message_id + 1
         message_details = {
             'id': self.message_id,
+            'title': title,
             'body': message_body,
             'sender': sender,
             'unread': 1,
@@ -75,7 +76,11 @@ class PostOffice:
             raise KeyError(f"Recipient '{recipient}' not found.")
 
         user_box = self.boxes[recipient]
-        messages = [message for message in user_box if txt_to_search.lower() in message['body'].lower()]
+        messages = [
+            message for message in user_box
+            if txt_to_search.lower() in message['title'].lower()
+            or txt_to_search.lower() in message['body'].lower()
+        ]
         return messages
 
 
@@ -86,11 +91,13 @@ def show_example():
     post_office = PostOffice(users)
     message_id = post_office.send_message(
         sender='Mr. Peanutbutter',
+        title = 'hello1',
         recipient='Newman',
         message_body='Hello, Newman.',
     )
     message_id = post_office.send_message(
         sender='Mr. Peanutbutter',
+        title='hello2',
         recipient='Newman',
         message_body='Hello',
     )
