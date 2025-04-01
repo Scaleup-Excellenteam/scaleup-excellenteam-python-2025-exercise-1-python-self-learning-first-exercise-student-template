@@ -1,7 +1,7 @@
 from argparse import ArgumentError
 import time
 
-def running_2000(func,*args):
+def running_2000(func,*args,**kwargs):
     """
         Measures the execution time of a given function in seconds.
         Catches and prints ArgumentError messages if raised during execution.
@@ -9,7 +9,7 @@ def running_2000(func,*args):
         """
     start = time.perf_counter()
     try:
-        func(*args)
+        func(*args,**kwargs)
     except ArgumentError as e:
         print(e.message)
         return None
