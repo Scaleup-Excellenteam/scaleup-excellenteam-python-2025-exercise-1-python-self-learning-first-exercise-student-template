@@ -91,7 +91,7 @@ class PostOffice:
 
         return_messages = []
         for message in user_box:
-            if string in message['body'] or in message['title']:
+            if string in message['body'] or string in message['title']:
                 return_messages.append(message)
 
         return return_messages
