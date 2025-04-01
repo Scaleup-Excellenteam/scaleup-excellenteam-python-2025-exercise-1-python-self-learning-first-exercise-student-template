@@ -1,4 +1,4 @@
-from itertools import chain
+from itertools import zip_longest
 from typing import Iterable, List, Generator
 
 
@@ -8,7 +8,7 @@ def interleave(*args:Iterable)->List:
     :param args: Iterables to merge
     :return: Flattened list
     """
-    return list(chain.from_iterable(zip(*args)))
+    return [item for items in zip_longest(*args) for item in items if item is not None]
 
 def generator_interleave(*args:Iterable)->Generator:
     """
@@ -17,8 +17,10 @@ def generator_interleave(*args:Iterable)->Generator:
     :return:Elements in interleaved order.
     """
 
-    for items in zip(*args):
-        yield from items
+    for items in zip_longest(*args):
+        for item in items:
+            if item is not None:
+                yield item
 
 
 if __name__ == '__main__':
