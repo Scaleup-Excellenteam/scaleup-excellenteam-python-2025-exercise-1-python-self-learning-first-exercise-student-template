@@ -1,4 +1,4 @@
-def cup_of_join(*args, sep='-') -> list:
+def cup_of_join(*args, sep=None) -> list:
     """
     Combine lists to one list and separate them with the char sep
 
@@ -15,9 +15,9 @@ def cup_of_join(*args, sep='-') -> list:
             if not isinstance(lst, list):
                 raise TypeError(f"Expected a list, got {type(lst).__name__}.")
 
-            if result:
-                result.append(sep)
             result.extend(lst)
+            if sep is not None:
+                result.append(sep)
 
         return result
 
@@ -29,5 +29,5 @@ def cup_of_join(*args, sep='-') -> list:
         return None
 
 if __name__ == '__main__':
-    lst = cup_of_join([1, 2], [8], [9, 5, 6], sep='@')
+    lst = cup_of_join([1, 2], ['a', 'b'], [True])
     print(lst)
