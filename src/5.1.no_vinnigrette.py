@@ -1,7 +1,7 @@
 import datetime, random
 
 
-def no_vinnigerette() -> datetime:
+def no_vinnigrette() -> datetime:
     """
     Gets 2 dates from the user as input and returns a random date between them.
     :return: Random date.
@@ -29,4 +29,4 @@ def no_vinnigerette() -> datetime:
 
 
 if __name__ == '__main__':
-    print(no_vinnigerette())
+    print(no_vinnigrette())
