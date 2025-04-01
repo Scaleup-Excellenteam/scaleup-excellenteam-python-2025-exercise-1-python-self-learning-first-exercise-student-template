@@ -23,9 +23,6 @@ def piece_of_cake(prices: dict, optionals: list = None, **kwargs) -> int:
     except KeyError as e:
         print(f"KeyError: {e}")
         return None
-    except ValueError as e:
-        print(f"ValueError: {e}")
-        return None
 
 if __name__ == '__main__':
     recipe_price = piece_of_cake(
