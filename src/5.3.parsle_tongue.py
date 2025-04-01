@@ -1,7 +1,7 @@
 import os
 import re
 
-def parsle_tongue(file_path: str):
+def parsle_tongue(file_path: str = None):
     """
     Extracts hidden messages from a file using a generator. Messages are defined as lowercase English letters (at least 5 characters)
     followed by an exclamation mark (!).
@@ -9,6 +9,10 @@ def parsle_tongue(file_path: str):
     :param file_path: Path to a file
     :yield: Extracted messages one by one
     """
+    if file_path is None:
+        relative_path = './resources/logo.jpg'
+        file_path = os.path.abspath(relative_path)
+
     PATTERN = re.compile(rb'[a-z]{5,}!') # the hidden messages pattern.
     CHUNK_SIZE = 1024
 
@@ -33,14 +37,14 @@ def parsle_tongue(file_path: str):
 
     except FileNotFoundError:
         print(f"Error: The file '{file_path}' was not found.")
+        yield ""
 
 if __name__ == '__main__':
     relative_path  = './resources/logo.jpg'
     full_path = os.path.abspath(relative_path)
 
-    found_messages = list(parsle_tongue(full_path))
+    found_messages = list(parsle_tongue())
     if found_messages:
         print("Found messages:", found_messages)
     else:
         print("No hidden messages found.")
-
