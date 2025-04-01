@@ -36,7 +36,7 @@ class PostOffice:
             'id': self.message_id,
             'body': message_body,
             'sender': sender,
-            'unread': False
+            'unread': True
         }
         if urgent:
             user_box.insert(0, message_details)
@@ -64,9 +64,9 @@ class PostOffice:
         read_number = 0
         read_messages = []
         while read_number < message_number:
-            if not user_box[read_number].get('unread'):
+            if user_box[read_number].get('unread'):
                 read_messages.append(user_box[read_number])
-                user_box[read_number]['unread'] = True
+                user_box[read_number]['unread'] = False
                 read_number += 1
             else:
                 read_number += 1
