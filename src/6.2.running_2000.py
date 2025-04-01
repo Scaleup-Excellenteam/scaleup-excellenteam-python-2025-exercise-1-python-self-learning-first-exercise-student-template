@@ -19,7 +19,5 @@ def running_2000(f, *args, **kwargs):
 
 
 if __name__ == '__main__':
-    a = running_2000(print, "Hello")
-    b = running_2000(zip, [1, 2, 3], [4, 5, 6])
-    c = running_2000("Hi {name}".format, name="Bug")
-    print(f"{a}\n{b}\n{c}")
+    running_2000(print, "Hello")
+
