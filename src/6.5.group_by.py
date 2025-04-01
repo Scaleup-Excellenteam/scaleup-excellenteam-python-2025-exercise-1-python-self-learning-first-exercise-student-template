@@ -11,7 +11,7 @@ def group_by(func, iterable) -> dict:
     :return: A dictionary where keys are results of func and values are lists of corresponding elements.
     """
     grouped_dict = defaultdict(list)
-    {grouped_dict[func(item)].append(item) for item in iterable}
+    grouped = {grouped_dict[func(item)].append(item) for item in iterable}
     grouped_dict = dict(grouped_dict)
     return grouped_dict
 

@@ -26,14 +26,14 @@ def remember_remember(image_path: str) -> str:
         for y in range(rows):
             # If the pixel is black add the char (ascii) to the message.
             if all(channel <= 50 for channel in pixels[x, y]):
-                    message += chr(y)
+                message += chr(y)
 
     return message
 
 
 
 if __name__ == '__main__':
-    relative_path  = './resources/code.png'
-    full_path = os.path.abspath(relative_path)
-    hidden_message = remember_remember(full_path)
+    RELATIVE_PATH  = './resources/code.png'
+    FULL_PATH = os.path.abspath(RELATIVE_PATH)
+    hidden_message = remember_remember(FULL_PATH)
     print(f"The hidden message is: {hidden_message}")

@@ -1,4 +1,7 @@
-"""Interleaves elements from multiple iterables and returns them as a list."""
+"""
+Interleaves elements from multiple iterables and returns them as a list
+ or yields them one by one.
+ """
 
 def interleave(*iterables):
     """
@@ -8,14 +11,14 @@ def interleave(*iterables):
     :return: List of interleaved elements from all iterables
     """
     iterators = [iter(it) for it in iterables]
-    result = []
+    result_list = []
     while iterators:
         for iterator in iterators:
             try:
-                result.append(next(iterator))
+                result_list.append(next(iterator))
             except StopIteration:
                 iterators.remove(iterator)
-    return result
+    return result_list
 
 def generator_interleave(*iterables):
     """

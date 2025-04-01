@@ -88,13 +88,13 @@ def show_example():
     """Show example of using the PostOffice class."""
     users = ('Newman', 'Mr. Peanutbutter')
     post_office = PostOffice(users)
-    message_id = post_office.send_message(
+    post_office.send_message(
         sender='Mr. Peanutbutter',
         title = 'hello1',
         recipient='Newman',
         message_body='Hello, Newman.',
     )
-    message_id = post_office.send_message(
+    post_office.send_message(
         sender='Mr. Peanutbutter',
         title='hello2',
         recipient='Newman',
