@@ -37,8 +37,8 @@ def parsle_tongue(file_path: str = None):
                 # keep the last 10 bytes as the beginning of the next chunk in case the message is between chunks.
                 # If the message is in the last 10 bytes so find where it ends.
                 if any(match in pattern.findall(buffer[-10:]) for match in pattern_matches):
-                    match_start = buffer.find(match)
-                    match_end = match_start + len(match)
+                    match_start = buffer.find(pattern_matches[-1])
+                    match_end = match_start + len(pattern_matches[-1])
                     buffer = buffer[match_end:]
                 else:
                     buffer = buffer[-10:]
