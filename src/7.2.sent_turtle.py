@@ -13,7 +13,7 @@ class PostOffice:
         self.message_id = 0
         self.boxes = {user: [] for user in usernames}
 
-    def send_message(self, sender, recipient, message_body,message_title, urgent=False):
+    def send_message(self, sender, recipient,message_title, message_body, urgent=False):
         """Send a message to a recipient.
         Adds another key to the message details that indicates if a message was read.
         Includes a try-except block to check if the recipient exists in the boxes.
