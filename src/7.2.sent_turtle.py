@@ -1,5 +1,15 @@
+"""
+This module defines the PostOffice class, which simulates a post office system where users can send,
+receive, and search for messages in their inboxes. It supports creating user inboxes, sending messages,
+retrieving unread messages, and searching for messages by content.
 
+The PostOffice class allows users to:
+- Send messages with an optional urgency flag.
+- Read unread messages from the inbox.
+- Search for messages containing a specific substring.
 
+Exceptions are raised if an operation is attempted with a non-existent user.
+"""
 class PostOffice:
     """A Post Office class. Allows users to message each other.
 
@@ -8,7 +18,6 @@ class PostOffice:
 
     :param list usernames: Users for which we should create PO Boxes.
     """
-
     def __init__(self, usernames):
         self.message_id = 0
         self.boxes = {user: [] for user in usernames}
@@ -29,8 +38,8 @@ class PostOffice:
         """
         try:
             user_box = self.boxes[recipient]
-        except KeyError:
-           raise KeyError("recipient not found")
+        except KeyError as exc:
+            raise KeyError("recipient not found") from exc
         self.message_id = self.message_id + 1
         message_details = {
             'id': self.message_id,
@@ -45,7 +54,7 @@ class PostOffice:
             user_box.append(message_details)
         return self.message_id
 
-    def read_inbox(self,user_name,N=0):
+    def read_inbox(self,user_name,n=0):
         """Retrieve unread messages from a user's inbox and mark them as read.
 
         :param str user_name: The username whose inbox is being accessed.
@@ -57,11 +66,11 @@ class PostOffice:
         """
         try:
             user_box = self.boxes[user_name]
-        except KeyError:
-            raise KeyError("User not found")
+        except KeyError as exc:
+            raise KeyError("User not found") from exc
 
-        N = len(user_box) if N == 0 else N
-        message_number = min(len(user_box), N)
+        n = len(user_box) if n == 0 else n
+        message_number = min(len(user_box), n)
         read_number = 0
         read_messages = []
         while read_number < message_number:
@@ -86,8 +95,8 @@ class PostOffice:
         """
         try:
             user_box = self.boxes[user_name]
-        except KeyError:
-            raise KeyError("User not found")
+        except KeyError as exc:
+            raise KeyError("User not found") from exc
 
         return_messages = []
         for message in user_box:
