@@ -15,6 +15,7 @@ def parsle_tongue(file_path: str = None):
 
     PATTERN = re.compile(rb'[a-z]{5,}!') # the hidden messages pattern.
     CHUNK_SIZE = 1024
+    messages = []
 
     try:
         with open(file_path, 'rb') as file:
@@ -24,7 +25,7 @@ def parsle_tongue(file_path: str = None):
                 pattern_matches = PATTERN.findall(buffer)
 
                 for match in pattern_matches:
-                    yield match.decode()
+                    messages.append(match.decode())
 
                 # keep the last 10 bytes as the beginning of the next chunk in case the message is between chunks.
                 # If the message is in the last 10 bytes so find where it ends.
@@ -35,15 +36,17 @@ def parsle_tongue(file_path: str = None):
                 else:
                     buffer = buffer[-10:]
 
+        return messages
+
     except FileNotFoundError:
         print(f"Error: The file '{file_path}' was not found.")
-        yield ""
+        return ""
 
 if __name__ == '__main__':
     relative_path  = './resources/logo.jpg'
     full_path = os.path.abspath(relative_path)
 
-    found_messages = list(parsle_tongue())
+    found_messages = parsle_tongue()
     if found_messages:
         print("Found messages:", found_messages)
     else:
