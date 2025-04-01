@@ -7,7 +7,6 @@ import functools
 
 class TypeCheckException(Exception):
     """custom error exception class"""
-    pass
 
 def type_check(correct_type):
     """
