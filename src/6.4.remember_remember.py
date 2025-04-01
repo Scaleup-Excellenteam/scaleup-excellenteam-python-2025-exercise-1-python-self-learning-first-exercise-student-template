@@ -3,7 +3,7 @@ import os
 from PIL import Image
 
 
-def remember_remember(path: str) -> str:
+def remember_remember(path: str = "code.png") -> str:
     """
     Checks for black dots in the image of the given path, and converts the row to its ascii equivalent, the order of
     the word is by columns.
