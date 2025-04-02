@@ -1,6 +1,6 @@
 import os
 
-def find_deep_files(directory):
+def thats_the_way(directory):
     
     return [
         os.path.join(directory, f) 
@@ -11,4 +11,4 @@ def find_deep_files(directory):
 directory_path = "C:/Users/farha/Notebooks/content/week05/images"
 
 if __name__ == '__main__':
-    print(find_deep_files(directory_path))
+    print(thats_the_way(directory_path))
