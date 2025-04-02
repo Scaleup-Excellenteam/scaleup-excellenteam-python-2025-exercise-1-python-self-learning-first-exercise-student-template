@@ -2,38 +2,37 @@ import random
 from datetime import datetime, timedelta
 
 def no_vinnigrete(start_date_str, end_date_str):
-
     try:
-        # converting the input strings to datetime objects
+        # Convert input strings to datetime objects
         start_date = datetime.strptime(start_date_str, "%Y-%m-%d")
         end_date = datetime.strptime(end_date_str, "%Y-%m-%d")
         
-        # checking if the start date is after the end date
+        # Swap dates if start is after end
         if start_date > end_date:
             start_date, end_date = end_date, start_date
         
-        # calculating the total number of days in the range
+        # Calculate total days in range
         delta = end_date - start_date
         total_days = delta.days
         
-        # generating a random day in the range
+        # Generate random day
         random_days = random.randint(0, total_days)
         random_date = start_date + timedelta(days=random_days)
         
-        # monday check
+        # Monday check (now with English message)
         if random_date.weekday() == 0:
-            print("אין לי ויניגרט!")
+            print("Ain't gettin' no vinaigrette today :(")
         
         return random_date.strftime("%Y-%m-%d")
     
-    # handling invalid date
     except ValueError:
-        return "שגיאה: נא להזין תאריכים תקינים במבנה YYYY-MM-DD"
+        return "Error: Please enter valid dates in YYYY-MM-DD format"
 
 
-date1 = input("הזן תאריך התחלה (YYYY-MM-DD): ")
-date2 = input("הזן תאריך סיום (YYYY-MM-DD): ")
+# Test block remains the same
+date1 = input("Enter start date (YYYY-MM-DD): ")
+date2 = input("Enter end date (YYYY-MM-DD): ")
 
 if __name__ == '__main__':
     result = no_vinnigrete(date1, date2)
-    print(f"התאריך האקראי: {result}")
+    print(f"Random date: {result}")
