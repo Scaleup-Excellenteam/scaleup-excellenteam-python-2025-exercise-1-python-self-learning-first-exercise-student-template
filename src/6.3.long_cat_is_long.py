@@ -1,14 +1,13 @@
-import string
-
-def count_words(text):
+def long_cat_is_long(text):
     """
-    The function will return a dictionary with the keys 'word' and there length of words of the giving text
-    :param text: text to be counted
-    :return: dicitonary with the keys 'word' and there length of words of the text
+    Returns a dictionary where keys are words (only alphabetic),
+    and values are their lengths.
     """
     words = [word.strip(":,.?").lower() for word in text.split()]
-    dictionary = {word : len(word) for word in words}
-    return dictionary
+    # שמור רק מילים עם אותיות אנגליות קטנות בלבד
+    filtered_words = [word for word in words if word.isalpha()]
+    return {word: len(word) for word in filtered_words}
+
 
 if __name__ == '__main__':
     text = """
@@ -25,4 +24,4 @@ if __name__ == '__main__':
                        'radio': 5, 'operates': 8, 'exactly': 7, 'the': 3, 'same': 4, 'way': 3, 'send': 4, 'signals': 7,
                        'here': 4, 'they': 4, 'receive': 7, 'them': 4, 'there': 5, 'only': 4, 'difference': 10,
                        'that': 4, 'no': 2}
-    print(count_words(text))
+    print(long_cat_is_long(text))

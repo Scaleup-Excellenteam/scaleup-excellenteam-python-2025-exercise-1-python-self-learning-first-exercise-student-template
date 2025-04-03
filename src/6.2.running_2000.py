@@ -2,12 +2,13 @@ import time
 import timeit
 
 
-def timer(f, *args , **kwargs):
+def running_2000(f, *args , **kwargs):
     """
-    This function gets a function and arguments and return the time is take to make the function with this arguments
-    :param f: function to be , *args: argument , **kwargs : dictionary arguments
-    :return time: time taken to make the function
-    """
+       This function gets a function and arguments and return the time is take to make the function with this arguments
+       :param f: function to be , *args: argument , **kwargs : dictionary arguments
+       :return time: time taken to make the function
+       """
+
     start = timeit.default_timer()
     f(*args, **kwargs)
     return timeit.default_timer() - start
@@ -15,6 +16,6 @@ def timer(f, *args , **kwargs):
 
 
 if __name__ == '__main__':
-    print(timer("Hi {name}".format, name="Bug"))
-    print(timer(print, "Hello"))
-    print(timer(zip, [1, 2, 3], [4, 5, 6]))
+    print(running_2000("Hi {name}".format, name="Bug"))
+    print(running_2000(print, "Hello"))
+    print(running_2000(zip, [1, 2, 3], [4, 5, 6]))

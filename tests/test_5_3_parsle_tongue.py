@@ -14,7 +14,7 @@ def load_parsle_tongue():
 parsle_tongue = load_parsle_tongue()
 
 
-class MyTestCase(unittest.TestCase):
+class  MyTestCase(unittest.TestCase):
 
     def test_hidden_words_found(self):
         import os

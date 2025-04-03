@@ -1,61 +1,62 @@
 class PostOffice:
     def __init__(self, usernames):
+        """
+        Initializes a post office with an inbox for each user.
+        :param usernames: list of usernames.
+        """
         self.message_id = 0
         self.boxes = {user: [] for user in usernames}
 
-    def send_message(self, sender, recipient, message_body, urgent=False):
-        user_box = self.boxes[recipient]
-        self.message_id = self.message_id + 1
-        message_details = {
+    def send_message(self, sender, recipient, title, body, urgent=False):
+        """
+        Sends a message to a recipient. Urgent messages go to the top of the inbox.
+        :return: the unique message id.
+        """
+        self.message_id += 1
+        message = {
             'id': self.message_id,
-            'body': message_body,
             'sender': sender,
-            'isRead' :False
+            'title': title,
+            'body': body,
+            'unread': True
         }
+
         if urgent:
-            user_box.insert(0, message_details)
+            self.boxes[recipient].insert(0, message)
         else:
-            user_box.append(message_details)
+            self.boxes[recipient].append(message)
+
         return self.message_id
-    def Read_message(self, username,message_id):
-        inbox = self.boxes[username]
-        for message in inbox:
+
+    def read_message(self, username, message_id):
+        """
+        Marks the message with the given ID as read in the user's inbox.
+        """
+        for message in self.boxes[username]:
             if message['id'] == message_id:
-                message['isRead'] = True
+                message['unread'] = False
 
-    def read_inbox (self , username , N):
-        """Read N messages from the inbox
-
-        :Arg
-            username(str) : The username of the user to read messages from
-            N(int): Number of messages to read
-
-        :return
-          list(list): List of the first N messages in the inbox
+    def read_inbox(self, username, n=None):
+        """
+        Returns the first n unread messages from the user's inbox.
+        Marks them as read and removes them from the inbox.
+        If n is not specified, returns all unread messages.
         """
         inbox = self.boxes[username]
-        if N is None:
-           messages = [message for message in inbox]
-           [self.Read_message(username, message['id']) for message in messages]
-        else:
-            messages = [message for message in inbox[:N]]
-            [self.Read_message(username, message['id']) for message in messages[:N]]
+        messages = inbox[:n] if n is not None else inbox
+        for message in messages:
+            self.read_message(username, message['id'])
         return messages
 
-    def search_inbox (self, username , contained):
-        """Search for messages in the inbox that are contained in contained
-
-        :Arg
-            username(str) : The username of the user to read messages from
-            contained(str) : The wanted mesage to search for
-        :return
-            list(list): List of the message the contained in contained
+    def search_inbox(self, username, contained):
         """
-        inbox = self.boxes[username]
-        messages = [message for message in inbox if message['body'].contains(contained)]
-        return messages
-
-
-if __name__ == '__main__':
-    user1 = PostOffice("Matan")
-    
+        Returns all messages that contain the given substring
+        in the title or body. The search is case-insensitive.
+        Only searches messages still in the inbox.
+        """
+        inbox = self.boxes.get(username, [])
+        contained_lower = contained.lower()
+        return [
+            msg for msg in inbox
+            if contained_lower in msg['title'].lower() or contained_lower in msg['body'].lower()
+        ]

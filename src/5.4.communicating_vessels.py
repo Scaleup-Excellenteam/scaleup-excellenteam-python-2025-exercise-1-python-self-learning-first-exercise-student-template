@@ -1,17 +1,24 @@
-def communicating_vessels(*iterables):
+from itertools import zip_longest
+
+def interleave(*iterables):
     """
-    This function takes a iterable (one or more) and returns a list of all the iterables weave each other
-    :param *iterables : iterable (one or more)
-    :return: list of all iterables weave each other
+    Interleave all items from input iterables. Pads shorter ones with None.
     """
-    # return_list =[]
+    result = []
+    for values in zip_longest(*iterables, fillvalue=None):
+        for value in values:
+            if value is not None:
+                result.append(value)
+    return result
+def generator_interleave(*iterables):
+    """
+    Generator version of interleave that yields items one by one.
+    """
     for values in zip(*iterables):
         for value in values:
-            # return_list.append(value)
             yield value
-    # return return_list // adding this cuz in the mission its said to return the list like this : [a ,1 ,! ,b , 2, @ , c , 3, #]
+
+
 if __name__ == '__main__':
-    # print(communicating_vessels('abc', [1, 2, 3], ('!', '@', '#')))
-    generator_iterator = communicating_vessels('abc', [1, 2, 3], ('!', '@', '#'))
-    for item in generator_iterator:
-        print(item , end =' ')
+    print(list(interleave('ab', [1, 2, 3], ('@', '%'))))
+    print(list(generator_interleave('abc', [1, 2, 3], ('!', '@', '#'))))
