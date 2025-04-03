@@ -1,23 +1,28 @@
+import datetime
 import random
-from datetime import datetime, timedelta
 
-def no_vinnigrete(start_date, end_date):
+def no_vinnigrete(start_str, end_str):
     """
-    This function takes two dates(start , end) and print a random date between the two dates or "No vinaigrette!" if its on Monday.
-    :param start_date : start date , end_date : end date
-    :return: print a random date or "No vinaigrette!"
+    Prints a random date between two given dates unless it's a Monday.
+
+    Parameters:
+    start_str (str): Start date in the format 'YYYY-MM-DD'.
+    end_str (str): End date in the format 'YYYY-MM-DD'.
     """
-    start_date = datetime.strptime(start_date, "%Y-%m-%d")
-    end_date = datetime.strptime(end_date, "%Y-%m-%d")
-    random_days = random.randint(0, (end_date - start_date).days)
-    random_date = start_date + timedelta(days=random_days)
-    if random_date.weekday() == 0:
+    try:
+        start = datetime.datetime.strptime(start_str, "%Y-%m-%d")
+        end = datetime.datetime.strptime(end_str, "%Y-%m-%d")
+    except ValueError:
+        print("Invalid date format. Please use 'YYYY-MM-DD'.")
+        return
+
+    if start > end:
+        start, end = end, start
+
+    delta_days = (end - start).days
+    chosen_day = start + datetime.timedelta(days=random.randint(0, delta_days))
+
+    if chosen_day.weekday() == 0:
         print("Ain't gettin' no vinaigrette today :(")
     else:
-        print(random_date.strftime("%Y-%m-%d"))
-
-
-if __name__ == '__main__':
-    start_date = input("Enter start date (YYYY-MM-DD): ")
-    end_date = input("Enter end date (YYYY-MM-DD): ")
-    no_vinnigrete(start_date, end_date)
+        print("It's not Monday.")

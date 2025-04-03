@@ -24,6 +24,6 @@ if __name__ == '__main__':
     Prompts the user to input a directory path and prints all files
     inside that directory which start with 'deep'.
     """
-    filename = R""  # Insert path here, e.g. r"C:\Users\HALAA\some_folder"
+    filename = R""
     print(thats_the_way(filename))
 
