@@ -1,5 +1,6 @@
 from itertools import zip_longest
 
+
 def interleave(*iterables):
     """
     Interleave all items from input iterables. Pads shorter ones with None.
@@ -10,6 +11,8 @@ def interleave(*iterables):
             if value is not None:
                 result.append(value)
     return result
+
+
 def generator_interleave(*iterables):
     """
     Generator version of interleave that yields items one by one.

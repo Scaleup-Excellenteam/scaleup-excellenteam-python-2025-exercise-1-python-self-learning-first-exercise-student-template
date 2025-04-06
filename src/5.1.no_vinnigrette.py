@@ -1,11 +1,12 @@
 import random
 from datetime import datetime, timedelta
 
+
 def no_vinnigrete(start_date, end_date):
     """
-    This function takes two dates(start , end) and print a random date between the two dates or "No vinaigrette!" if its on Monday.
-    :param start_date : start date , end_date : end date
-    :return: print a random date or "No vinaigrette!"
+    This function takes two dates(start , end) and print a random date between the two dates or "No vinaigrette!" if
+    its on Monday. :param end_date: :param start_date : start date , end_date : end date :return: print a random date
+    or "No vinaigrette!"
     """
     start_date = datetime.strptime(start_date, "%Y-%m-%d")
     end_date = datetime.strptime(end_date, "%Y-%m-%d")

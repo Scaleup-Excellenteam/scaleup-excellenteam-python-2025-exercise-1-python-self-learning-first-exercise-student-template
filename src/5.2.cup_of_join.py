@@ -23,4 +23,4 @@ def cup_of_join(*arrays, sep=None):
 
 
 if __name__ == '__main__':
-   print(cup_of_join([1, 2], ['a', 'b'], [True]))
+    print(cup_of_join([1, 2], ['a', 'b'], [True]))

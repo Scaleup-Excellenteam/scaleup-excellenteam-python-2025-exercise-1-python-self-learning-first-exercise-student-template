@@ -1,6 +1,9 @@
+print("STARTING TEST FILE")
+
 import unittest
 import importlib.util
 import os
+print("Before changing dir:", os.getcwd())
 
 
 def load_parsle_tongue():
@@ -22,7 +25,7 @@ class MyTestCase(unittest.TestCase):
         original_dir = os.getcwd()  # Save current directory
         print("Starting in:", os.getcwd())
         try:
-            os.chdir("src")  # Change to new directory
+            os.chdir("../src")  # Change to new directory
             print("Now in:", os.getcwd())  # Perform actions in new directory
 
             result = parsle_tongue()
