@@ -1,5 +1,6 @@
 import os
 
+
 def parsle_tongue():
     """
     Opens the logo.jpg file in binary mode, reads it in chunks, and yields hidden messages
