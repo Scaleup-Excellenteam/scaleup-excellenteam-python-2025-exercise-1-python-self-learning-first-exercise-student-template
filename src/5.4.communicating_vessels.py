@@ -1,3 +1,5 @@
+"""Exercise solution 5.4"""
+
 
 def interleave(*iterables):
     """
@@ -44,6 +46,8 @@ def generator_interleave(*iterables):
 
 
 if __name__ == "__main__":
+    """main function"""
+
     print("test1:")
     result = list(interleave('ab', [1, 2, 3], ('@', '%')))
     print(result)

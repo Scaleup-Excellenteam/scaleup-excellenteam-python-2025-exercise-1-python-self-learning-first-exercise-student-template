@@ -1,3 +1,4 @@
+"""Exercise solution 5.1"""
 import datetime
 import random
 
@@ -10,8 +11,8 @@ def no_vinnigrete(start_date_str, end_date_str):
     try:
         start_date = datetime.datetime.strptime(start_date_str, "%Y-%m-%d").date()
         end_date = datetime.datetime.strptime(end_date_str, "%Y-%m-%d").date()
-    except ValueError:
-        raise ValueError("Dates must be in the format YYYY-MM-DD")
+    except ValueError as exc:
+        raise ValueError("Dates must be in the format YYYY-MM-DD") from exc
 
     if start_date > end_date:
         raise ValueError("Start date must be before end date")
@@ -32,6 +33,7 @@ def no_vinnigrete(start_date_str, end_date_str):
 
 
 if __name__ == "__main__":
+    """main function"""
 
     try:
         input_start_date = input("Enter the start date (YYYY-MM-DD): ")

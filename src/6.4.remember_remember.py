@@ -1,3 +1,4 @@
+"""Exercise solution 6.4"""
 from PIL import Image
 
 
@@ -31,6 +32,8 @@ def remember_remember(image_path):
 
 
 if __name__ == "__main__":
+    """main function"""
+
     input_file_path = "resources/code.png"
 
     try:

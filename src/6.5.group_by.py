@@ -1,3 +1,6 @@
+"""Exercise solution 6.5"""
+
+
 def group_by(func, iterable):
     """
     Groups elements of an iterable by the result of a function.
@@ -16,6 +19,8 @@ def group_by(func, iterable):
 
 
 if __name__ == "__main__":
+    """main function"""
+
     strings = ["hi", "bye", "yo", "try"]
     grouped_by_length = group_by(len, strings)
     print("Grouped by length:", grouped_by_length)
@@ -23,10 +28,9 @@ if __name__ == "__main__":
 
 
     def yuval(n):
+        """Test function"""
         return n % 3
 
 
     grouped_by_remainder = group_by(yuval, numbers)
     print("Grouped by remainder when divided by 3:", grouped_by_remainder)
-
-

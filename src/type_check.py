@@ -1,3 +1,4 @@
+"""Bonus question"""
 import functools
 
 
@@ -11,6 +12,8 @@ def type_check(correct_type):
     A decorator factory that returns a decorator checking if a function's parameter is of the correct type.
     """
     def decorator(func):
+        """Help function"""
+
         @functools.wraps(func)
         def wrapper(param):
             if not isinstance(param, correct_type):
@@ -24,10 +27,14 @@ def type_check(correct_type):
 
 @type_check(int)
 def times2(num):
+    """Help function"""
+
     return num * 2
 
 
 if __name__ == "__main__":
+    """main function"""
+
     print(times2(10))
     try:
         times2("hello")

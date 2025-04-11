@@ -1,3 +1,4 @@
+"""Bonus question"""
 import functools
 
 
@@ -7,6 +8,8 @@ def surprise(func):
     """
     @functools.wraps(func)
     def wrapper(*_, **__):
+        """Help function"""
+
         print("surprise!")
         return None
 
@@ -20,4 +23,6 @@ def greet(name):
 
 
 if __name__ == "__main__":
+    """main function"""
+
     greet("John")

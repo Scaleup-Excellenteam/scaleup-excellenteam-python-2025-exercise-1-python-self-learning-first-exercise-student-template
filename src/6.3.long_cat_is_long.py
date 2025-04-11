@@ -1,3 +1,6 @@
+"""Exercise solution 6.3"""
+
+
 def long_cat_is_long(input_text):
     """
     Count the length of each word in a text.
@@ -11,6 +14,8 @@ def long_cat_is_long(input_text):
 
 
 if __name__ == "__main__":
+    """main function"""
+
     sample_text = """
     You see, wire telegraph is a kind of a very, very long cat.
     You pull his tail in New York and his head is meowing in Los Angeles.

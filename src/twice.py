@@ -1,3 +1,4 @@
+"""Bonus question"""
 import functools
 
 
@@ -9,6 +10,7 @@ def twice(func):
 
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
+        """Help function"""
         func(*args, **kwargs)
         return func(*args, **kwargs)
 
@@ -17,9 +19,13 @@ def twice(func):
 
 @twice
 def print_message(message):
+    """Help function"""
+
     print(message)
     return message
 
 
 if __name__ == "__main__":
+    """main function"""
+
     result = print_message("Hello, world!")

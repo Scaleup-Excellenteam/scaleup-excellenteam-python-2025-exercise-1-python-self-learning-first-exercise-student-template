@@ -1,3 +1,4 @@
+"""Exercise solution 6.2"""
 import time
 
 
@@ -13,6 +14,8 @@ def running_2000(func, *args, **kwargs):
 
 
 if __name__ == "__main__":
+    """main function"""
+
     print_time = running_2000(print, "Hello")
     print(f"print('Hello') took {print_time:.8f} seconds to run")
 
@@ -24,6 +27,7 @@ if __name__ == "__main__":
 
 
     def yuval(n):
+        """Test function"""
         total = 0
         for i in range(n):
             total += i

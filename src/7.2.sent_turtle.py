@@ -1,3 +1,6 @@
+"""Exercise solution 7.2"""
+
+
 class PostOffice:
     """A Post Office class. Allows users to message each other."""
 
@@ -91,4 +94,6 @@ def sent_turtle():
 
 
 if __name__ == "__main__":
+    """main function"""
+
     sent_turtle()
