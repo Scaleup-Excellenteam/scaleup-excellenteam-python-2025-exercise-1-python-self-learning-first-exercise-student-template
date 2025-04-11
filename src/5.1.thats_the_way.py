@@ -20,7 +20,6 @@ def thats_the_way(folder_path):
 
 
 if __name__ == "__main__":
-    """main function"""
     IMAGES_FOLDER = "images"
 
     try:

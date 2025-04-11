@@ -26,6 +26,4 @@ def print_message(message):
 
 
 if __name__ == "__main__":
-    """main function"""
-
     result = print_message("Hello, world!")

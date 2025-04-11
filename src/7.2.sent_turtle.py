@@ -94,6 +94,5 @@ def sent_turtle():
 
 
 if __name__ == "__main__":
-    """main function"""
 
     sent_turtle()

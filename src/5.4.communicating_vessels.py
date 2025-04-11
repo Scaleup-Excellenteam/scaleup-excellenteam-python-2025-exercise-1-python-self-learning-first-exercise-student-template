@@ -46,7 +46,6 @@ def generator_interleave(*iterables):
 
 
 if __name__ == "__main__":
-    """main function"""
 
     print("test1:")
     result = list(interleave('ab', [1, 2, 3], ('@', '%')))

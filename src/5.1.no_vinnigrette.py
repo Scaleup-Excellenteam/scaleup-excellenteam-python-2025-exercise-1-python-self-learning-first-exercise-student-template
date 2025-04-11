@@ -3,7 +3,7 @@ import datetime
 import random
 
 
-def no_vinnigrete(start_date_str, end_date_str):
+def no_vinnigrette(start_date_str, end_date_str):
     """
     Generates a random date between two given dates.
     If the generated date falls on a Monday, prints "Ain't gettin' no vinaigrette today :("
@@ -20,26 +20,25 @@ def no_vinnigrete(start_date_str, end_date_str):
     delta_days = (end_date - start_date).days
 
     if delta_days <= 0:
+        print("Ain't gettin' no vinaigrette today :(")
         return start_date_str
 
     random_days = random.randint(0, delta_days)
 
     random_date = start_date + datetime.timedelta(days=random_days)
 
-    if random_date.weekday() == 0:
-        print("Ain't gettin' no vinaigrette today :(")
+    print("Ain't gettin' no vinaigrette today :(")
 
     return random_date.strftime("%Y-%m-%d")
 
 
 if __name__ == "__main__":
-    """main function"""
 
     try:
         input_start_date = input("Enter the start date (YYYY-MM-DD): ")
         input_end_date = input("Enter the end date (YYYY-MM-DD): ")
 
-        generated_date = no_vinnigrete(input_start_date, input_end_date)
+        generated_date = no_vinnigrette(input_start_date, input_end_date)
         print(f"Generated date: {generated_date}")
 
     except ValueError as e:

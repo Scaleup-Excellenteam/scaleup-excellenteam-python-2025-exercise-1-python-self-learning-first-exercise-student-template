@@ -14,7 +14,6 @@ def long_cat_is_long(input_text):
 
 
 if __name__ == "__main__":
-    """main function"""
 
     sample_text = """
     You see, wire telegraph is a kind of a very, very long cat.

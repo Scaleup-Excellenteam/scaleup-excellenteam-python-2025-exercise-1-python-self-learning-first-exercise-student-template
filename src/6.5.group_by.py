@@ -19,7 +19,6 @@ def group_by(func, iterable):
 
 
 if __name__ == "__main__":
-    """main function"""
 
     strings = ["hi", "bye", "yo", "try"]
     grouped_by_length = group_by(len, strings)

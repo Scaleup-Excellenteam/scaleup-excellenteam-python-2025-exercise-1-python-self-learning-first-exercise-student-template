@@ -28,12 +28,10 @@ def type_check(correct_type):
 @type_check(int)
 def times2(num):
     """Help function"""
-
     return num * 2
 
 
 if __name__ == "__main__":
-    """main function"""
 
     print(times2(10))
     try:

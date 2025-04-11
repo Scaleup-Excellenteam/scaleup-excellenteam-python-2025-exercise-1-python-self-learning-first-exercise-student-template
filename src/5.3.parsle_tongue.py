@@ -53,7 +53,6 @@ def parsle_tongue():
 
 
 if __name__ == "__main__":
-    """main function"""
 
     try:
         messages = parsle_tongue()
