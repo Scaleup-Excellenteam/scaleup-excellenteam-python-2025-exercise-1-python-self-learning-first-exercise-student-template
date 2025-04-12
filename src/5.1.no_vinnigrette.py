@@ -35,11 +35,11 @@ def no_vinnigrete(start_date_str, end_date_str):
 if __name__ == "__main__":
 
     try:
-        input_start_date = input("Enter the start date (YYYY-MM-DD): ")
-        input_end_date = input("Enter the end date (YYYY-MM-DD): ")
+        INPUT_START_DATE = input("Enter the start date (YYYY-MM-DD): ")
+        INPUT_END_DATE = input("Enter the end date (YYYY-MM-DD): ")
 
-        generated_date = no_vinnigrete(input_start_date, input_end_date)
-        print(f"Generated date: {generated_date}")
+        GENERATED_DATE = no_vinnigrete(INPUT_START_DATE, INPUT_END_DATE)
+        print(f"Generated date: {GENERATED_DATE}")
 
     except ValueError as e:
         print(f"Error: {e}")

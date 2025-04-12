@@ -1,5 +1,11 @@
 """Exercise solution 6.4"""
-from PIL import Image
+try:
+    from PIL import Image
+except ImportError:
+    class Image:
+        @staticmethod
+        def open(*args, **kwargs):
+            raise ImportError("PIL is not installed")
 
 
 def remember_remember(image_path):
@@ -12,7 +18,7 @@ def remember_remember(image_path):
     except FileNotFoundError:
         print(f"Error: File '{image_path}' not found.")
         return ""
-    except Exception as error:
+    except (IOError, OSError) as error:
         print(f"Error opening image: {error}")
         return ""
 
@@ -33,15 +39,15 @@ def remember_remember(image_path):
 
 if __name__ == "__main__":
 
-    input_file_path = "resources/code.png"
+    INPUT_FILE_PATH = "resources/code.png"
 
     try:
-        message = remember_remember(input_file_path)
+        MESSAGE = remember_remember(INPUT_FILE_PATH)
 
-        if message:
+        if MESSAGE:
             print("Decrypted message:")
-            print(message)
+            print(MESSAGE)
         else:
             print("No message found in the image.")
-    except Exception as exc:
+    except (FileNotFoundError, IOError, OSError) as exc:
         print(f"An error occurred: {exc}")

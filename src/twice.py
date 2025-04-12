@@ -26,4 +26,4 @@ def print_message(message):
 
 
 if __name__ == "__main__":
-    result = print_message("Hello, world!")
+    RESULT = print_message("Hello, world!")

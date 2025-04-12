@@ -26,10 +26,10 @@ if __name__ == "__main__":
     numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 
-    def yuval(n):
+    def remainder_mod_3(n):
         """Test function"""
         return n % 3
 
 
-    grouped_by_remainder = group_by(yuval, numbers)
+    grouped_by_remainder = group_by(remainder_mod_3, numbers)
     print("Grouped by remainder when divided by 3:", grouped_by_remainder)
