@@ -3,8 +3,10 @@ try:
     from PIL import Image
 except ImportError:
     class Image:
+        """Mock Image class used when PIL is not available."""
         @staticmethod
         def open(*args, **kwargs):
+            """Mock method to simulate PIL's Image.open."""
             raise ImportError("PIL is not installed")
 
 

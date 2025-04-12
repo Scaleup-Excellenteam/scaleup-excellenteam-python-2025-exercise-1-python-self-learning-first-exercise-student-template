@@ -4,7 +4,6 @@ import functools
 
 class WrongType(Exception):
     """Custom exception for when a parameter is of the wrong type."""
-    pass
 
 
 def type_check(correct_type):

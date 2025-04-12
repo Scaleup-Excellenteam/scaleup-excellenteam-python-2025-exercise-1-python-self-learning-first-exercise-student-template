@@ -11,7 +11,6 @@ def surprise(func):
         """Help function"""
 
         print("surprise!")
-        return None
 
     return wrapper
 

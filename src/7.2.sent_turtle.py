@@ -9,6 +9,22 @@ class PostOffice:
         self.boxes = {user: [] for user in usernames}
 
     def send_message(self, sender, recipient, title, body, urgent=False):
+        """
+        Send a message from one user to another.
+
+        Args:
+            sender: Username of the sender
+            recipient: Username of the recipient
+            title: Message title
+            body: Message content
+            urgent: Whether the message is urgent (default: False)
+
+        Returns:
+            The ID of the scent message
+
+        Raises:
+            KeyError: If recipient doesn't exist
+        """
 
         if recipient not in self.boxes:
             raise KeyError(f"User '{recipient}' does not exist")
@@ -68,7 +84,9 @@ class PostOffice:
 
 
 def sent_turtle():
-    """Main function to demonstrate the PostOffice functionality."""
+    """
+    Main function to demonstrate the PostOffice functionality.
+    """
     post_office = PostOffice(['alice', 'bob', 'charlie'])
 
     post_office.send_message('alice', 'bob', 'Urgent Message', 'Hello Bob!', urgent=True)
