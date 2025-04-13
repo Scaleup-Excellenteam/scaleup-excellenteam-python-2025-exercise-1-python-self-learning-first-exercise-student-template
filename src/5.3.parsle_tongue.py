@@ -24,30 +24,25 @@ def parsle_tongue(file_path: str = None):
     chunk_size = 1024
     messages = []
 
-    try:
-        with open(file_path, 'rb') as file:
-            buffer = b''
-            while chunk := file.read(chunk_size):
-                buffer += chunk
-                pattern_matches = pattern.findall(buffer)
+    with open(file_path, 'rb') as file:
+        buffer = b''
+        while chunk := file.read(chunk_size):
+            buffer += chunk
+            pattern_matches = pattern.findall(buffer)
 
-                for match in pattern_matches:
-                    messages.append(match.decode()[:-1])
+            for match in pattern_matches:
+                messages.append(match.decode()[:-1])
 
-                # keep the last 10 bytes as the beginning of the next chunk in case the message is between chunks.
-                # If the message is in the last 10 bytes so find where it ends.
-                if any(match in pattern.findall(buffer[-10:]) for match in pattern_matches):
-                    match_start = buffer.find(pattern_matches[-1])
-                    match_end = match_start + len(pattern_matches[-1])
-                    buffer = buffer[match_end:]
-                else:
-                    buffer = buffer[-10:]
+            # keep the last 10 bytes as the beginning of the next chunk in case the message is between chunks.
+            # If the message is in the last 10 bytes so find where it ends.
+            if any(match in pattern.findall(buffer[-10:]) for match in pattern_matches):
+                match_start = buffer.find(pattern_matches[-1])
+                match_end = match_start + len(pattern_matches[-1])
+                buffer = buffer[match_end:]
+            else:
+                buffer = buffer[-10:]
 
-        return messages
-
-    except FileNotFoundError:
-        print(f"Error: The file '{file_path}' was not found.")
-        return ""
+    return messages
 
 if __name__ == '__main__':
     RELATIVE_PATH  = './resources/logo.jpg'
