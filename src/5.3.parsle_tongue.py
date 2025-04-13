@@ -7,6 +7,8 @@ followed by an exclamation mark (!).
 import os
 import re
 
+BYTES_PER_CHUNK = 1024
+
 def parsle_tongue(file_path: str = None):
     """
     Extracts hidden messages from a file using a generator.
@@ -21,7 +23,9 @@ def parsle_tongue(file_path: str = None):
         file_path = os.path.abspath(path)
 
     pattern = re.compile(rb'[a-z]{5,}!') # the hidden messages pattern.
-    chunk_size = 1024
+
+    chunk_size = BYTES_PER_CHUNK
+
     messages = []
 
     with open(file_path, 'rb') as file:
