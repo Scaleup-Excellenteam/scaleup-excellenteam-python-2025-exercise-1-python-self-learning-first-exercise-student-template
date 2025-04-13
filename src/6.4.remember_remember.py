@@ -12,23 +12,18 @@ def remember_remember(image_path: str) -> str:
     :param image_path: The path to the encrypted image.
     :return: A string representing the hidden message.
     """
-    try:
-        img = Image.open(image_path).convert("RGB")
-    except FileNotFoundError:
-        print(f"Error: The file '{image_path}' was not found.")
-        return ""
+    with Image.open(image_path).convert("RGB") as img:
+        cols, rows = img.size
+        pixels = img.load()
 
-    cols, rows = img.size
-    pixels = img.load()
-    message = ""
+        message = ''.join(
+            chr(y)
+            for x in range(cols)
+            for y in range(rows)
+            if all(channel <= 50 for channel in pixels[x, y])
+        )
 
-    for x in range(cols):
-        for y in range(rows):
-            # If the pixel is black add the char (ascii) to the message.
-            if all(channel <= 50 for channel in pixels[x, y]):
-                message += chr(y)
-
-    return message
+        return message
 
 
 
