@@ -25,11 +25,9 @@ def thats_the_way(directory_path):
             if os.path.isfile(os.path.join(directory_path, f)) and f.startswith(START)
         ]
     except FileNotFoundError:
-        print("Error: no such directory")
-        return None
+        return "Error: no such directory"
     except PermissionError:
-        print("Error: permission denied")
-        return None
+        return "Error: permission denied"
 
 if __name__ == "__main__":
     print(thats_the_way(os.getcwd()))
