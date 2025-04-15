@@ -31,8 +31,7 @@ def no_vinnigrete(first_date_str,second_date_str):
         first_date = dt.datetime.strptime(first_date_str, "%Y-%m-%d").date()
         second_date = dt.datetime.strptime(second_date_str, "%Y-%m-%d").date()
     except ValueError:
-        print("invalid date")
-        return None
+        return "ERROR: invalid date"
 
     if first_date == second_date:
         random_date = first_date
@@ -53,4 +52,6 @@ def no_vinnigrete(first_date_str,second_date_str):
 
 
 if __name__ == '__main__':
-    no_vinnigrete("2023-07-10", "2023-07-10")
+    first = input("Enter first date in format: YYYY-MM-DD: ")
+    second = input("Enter first date in format: YYYY-MM-DD: ")
+    no_vinnigrete(first , second)
