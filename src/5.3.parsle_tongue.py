@@ -6,6 +6,7 @@ from a binary file (`logo.jpg`). The function looks for sequences of at least
 The file is read in chunks of 1024 bytes, and any file errors (e.g., file not found) are handled.
 """
 import os
+import string
 
 BUFFER_SIZE = 1024
 MIN_MSG_LENGTH = 5
