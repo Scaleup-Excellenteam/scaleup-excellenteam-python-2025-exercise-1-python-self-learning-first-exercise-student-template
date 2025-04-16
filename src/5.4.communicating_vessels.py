@@ -25,10 +25,7 @@ def generator_interleave(*args: Iterable) -> Generator:
     :param args: One or more iterables to interleave.
     :yield: Elements in interleaved order.
     """
-    for items in zip_longest(*args):
-        for item in items:
-            if item is not None:
-                yield item
+    yield from (item for items in zip_longest(*args) for item in items if item is not None)
 
 if __name__ == '__main__':
     print(interleave('abc', [1, 2, 3], ('!', '@', '#')))
