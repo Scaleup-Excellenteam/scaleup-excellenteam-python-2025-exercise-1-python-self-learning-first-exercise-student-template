@@ -1,24 +1,11 @@
 from datetime import datetime, timedelta
 import random
 
-def no_vinnigrete():
+def no_vinnigrette(start_date, end_date):
     """
-    Generate a random date between two user-provided dates.
+    Generate a random date between two dates.
     If the generated date is a Monday, print a special message.
-
-    :return: None
     """
-    # Get input from the user
-    date1_str = input("Enter the first date (YYYY-MM-DD): ")
-    date2_str = input("Enter the second date (YYYY-MM-DD): ")
-
-    # Convert string input to datetime objects
-    date1 = datetime.strptime(date1_str, "%Y-%m-%d")
-    date2 = datetime.strptime(date2_str, "%Y-%m-%d")
-
-    # Determine the earlier and later date
-    start_date = min(date1, date2)
-    end_date = max(date1, date2)
 
     # Calculate the number of days between the two dates
     delta_days = (end_date - start_date).days
@@ -37,4 +24,6 @@ def no_vinnigrete():
         print("No vinaigrette for me!")
 
 if __name__ == '__main__':
-    no_vinnigrete()
+    start = datetime.strptime("2023-01-01", "%Y-%m-%d")
+    end = datetime.strptime("2023-12-31", "%Y-%m-%d")
+    no_vinnigrette(start, end)
