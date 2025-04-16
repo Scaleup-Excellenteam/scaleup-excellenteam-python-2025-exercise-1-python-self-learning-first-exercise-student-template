@@ -22,21 +22,20 @@ def parsle_tongue():
     buffer = []
     path = os.path.abspath('./logo.jpg')
 
-    try:
-        with open(path, 'rb') as file:
-            while (chunk := file.read(BUFFER_SIZE)):
-                for byte in chunk:
-                    char = chr(byte)
-                    if char in VALID_CHAR_RANGE:
-                        buffer.append(char)
-                        if len(buffer) >= MIN_MSG_LENGTH and char == '!':
-                            yield ''.join(buffer[:-1])
-                            buffer.clear()
-                    else:
+    
+    with open(path, 'rb') as file:
+        while (chunk := file.read(BUFFER_SIZE)):
+            for byte in chunk:
+                char = chr(byte)
+                if char in VALID_CHAR_RANGE:
+                    buffer.append(char)
+                    if len(buffer) >= MIN_MSG_LENGTH and char == '!':
+                        yield ''.join(buffer[:-1])
                         buffer.clear()
+                else:
+                    buffer.clear()
 
-    except FileNotFoundError:
-        print(f"Error: {path} not found")
+   
 
 if __name__ == '__main__':
     for message in parsle_tongue():
