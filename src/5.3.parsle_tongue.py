@@ -1,45 +1,39 @@
 import re
+import os
 
 def parsle_tongue():
     """
-    Generator function that scans a binary file for secret strings
-    matching a specific pattern (5 or more lowercase letters followed by '!').
-
-    Reads the file in binary mode and processes it in chunks to avoid
-    memory overload. Strings that match the pattern and can be decoded
-    from bytes to UTF-8 are yielded.
-
-    :yield: Decoded secret strings that match the pattern.
-    :rtype: generator[str]
+    Generator that scans a binary file for secret strings.
+    Looks inside 'img/logo.jpg' in the project root.
     """
-    # Compile the regex pattern to match lowercase words of 5+ letters ending in '!'
     pattern = re.compile(rb'[a-z]{5,}!')
+    seen = set()
 
-    # Open the binary file (e.g., an image or other binary resource)
-    with open('resources/logo.jpg', 'rb') as f:
-        buffer = b''  # buffer to hold overlapping binary data
+    base_dir = os.path.dirname(os.path.dirname(__file__))  # goes up from /src
+    file_path = os.path.join(base_dir, 'img', 'logo.jpg')
+
+    with open(file_path, 'rb') as f:
+        buffer = b''
 
         while True:
-            chunk = f.read(1024)  # Read 1024 bytes at a time
+            chunk = f.read(1024)
             if not chunk:
-                break  # Stop when end of file is reached
+                break
 
-            buffer += chunk  # Append chunk to buffer
+            buffer += chunk
 
-            # Find all matches in the current buffer
-            matches = pattern.findall(buffer)
-            for match in matches:
+            for match in pattern.findall(buffer):
                 try:
-                    # Try to decode the match to a UTF-8 string
-                    yield match.decode()
+                    word = match.decode()[:-1]  # strip '!' at the end
+                    if word not in seen:
+                        seen.add(word)
+                        yield word
                 except UnicodeDecodeError:
-                    continue  # Skip matches that can't be decoded
+                    continue
 
-            # Retain only the last 10 bytes of the buffer for overlap
-            # to catch patterns that might span chunks
             buffer = buffer[-10:]
 
+
 if __name__ == '__main__':
-    secrets = parsle_tongue()
-    for secret in secrets:
-        print(secret)
+    for word in parsle_tongue():
+        print(word)

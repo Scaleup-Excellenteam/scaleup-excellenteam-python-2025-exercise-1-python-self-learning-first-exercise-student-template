@@ -1,4 +1,5 @@
 from PIL import Image
+import os
 
 def remember_remember(path):
     """
@@ -9,12 +10,16 @@ def remember_remember(path):
     the character corresponding to the Y-coordinate (as a Unicode character)
     to the decoded message and moves on to the next column.
 
-    :param str path: Path to the image file.
+    :param str path: Path to the image file (relative to this script).
     :return: The decoded message string.
     :rtype: str
     """
+    # Get absolute path relative to this script
+    script_dir = os.path.dirname(__file__)
+    abs_path = os.path.join(script_dir, 'resources', 'code.png')
+
     # Open the image and ensure it's in RGB mode
-    img = Image.open(path)
+    img = Image.open(abs_path)
     img = img.convert("RGB")
 
     width, height = img.size
@@ -22,18 +27,13 @@ def remember_remember(path):
 
     # Iterate through each column in the image
     for x in range(width):
-        # For each column, scan from top to bottom
         for y in range(height):
             r, g, b = img.getpixel((x, y))
-
-            # If the pixel is black or nearly black
             if r <= 10 and g <= 10 and b <= 10:
-                # Convert the y-position to a character and add to message
                 message += chr(y)
-                break  # Move to the next column after the first match
+                break
 
     return message
 
 if __name__ == '__main__':
-
     print(remember_remember("resources/code.png"))

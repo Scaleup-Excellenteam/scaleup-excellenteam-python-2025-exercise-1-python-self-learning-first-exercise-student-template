@@ -2,27 +2,24 @@ def interleave(*iterables):
     """
     Yield elements from multiple iterables in an interleaved (round-robin) fashion.
 
-    The function stops as soon as one of the iterables is exhausted.
-
-    :param iterables: Any number of iterable objects.
-    :yield: Elements from the input iterables in round-robin order.
-    :rtype: generator
+    Continues until all iterables are exhausted.
     """
-    # Convert each iterable to its iterator form
+    # Convert each iterable to an iterator
     iterators = [iter(it) for it in iterables]
 
-    while True:
-        try:
-            # Yield the next item from each iterator in order
-            for it in iterators:
+    while iterators:
+        next_iterators = []
+        for it in iterators:
+            try:
                 yield next(it)
-        except StopIteration:
-            # Stop if any iterator is exhausted
-            break
+                next_iterators.append(it)
+            except StopIteration:
+                continue
+        iterators = next_iterators
 
-# This is the name the test expects
+# Match the expected name
 generator_interleave = interleave
 
 if __name__ == '__main__':
-    for item in generator_interleave('abc', [1, 2, 3], ('!', '@', '#')):
+    for item in generator_interleave('abc', [1, 2], ('!',)):
         print(item, end=' ')

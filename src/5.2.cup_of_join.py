@@ -1,32 +1,34 @@
-def cup_of_join(*lists, sep='-'):
+_sentinel = object()  # Unique marker to detect if 'sep' was explicitly provided
 
+def cup_of_join(*lists, sep=_sentinel):
     """
-    Join multiple lists into a single list, inserting a separator between each original list.
+    Join multiple lists into a single list.
+    If a separator is explicitly provided, insert it after each list (even after the last one).
+    If not, simply concatenate all the elements from all lists.
 
-    :param lists: Any number of lists to be joined.
-    :param str sep: The separator to insert between lists (default is '-').
-    :return: A new list containing all elements of the input lists with separators in between.
-             Returns None if no lists are provided.
-    :rtype: list or None
+    :param lists: Any number of lists to join together.
+    :param sep: The separator to insert after each list (if given).
+    :return: A single list containing all elements with optional separators.
     """
-    # If no lists were provided, return None
-    if len(lists) == 0:
-        return None
+    # Return an empty list if no input lists were provided
+    if not lists:
+        return []
 
-    # If only one list is provided, return it as-is
-    if len(lists) == 1:
-        return lists[0]
+    result = []  # This will store the final combined list
 
-    new_lst = []
-    # Loop through each list and append its contents to the new list
+    # Iterate over each list provided
     for i, lst in enumerate(lists):
-        new_lst.extend(lst)
-        # Add the separator between lists, but not after the last one
-        if i != len(lists) - 1:
-            new_lst.append(sep)
+        result.extend(lst)  # Add all elements of the current list to result
+        if sep is not _sentinel:
+            result.append(sep)  # Add the separator if it was explicitly provided
 
-    return new_lst
+    return result  # Return the final joined list
 
+
+# Example usage when running this file directly
 if __name__ == '__main__':
+    # Example with custom separator '#'
     print(cup_of_join([1, 2, 30], [7, 8], [1], sep='#'))
+
+    # Example without specifying a separator — just concatenate lists
     print(cup_of_join([1, 2], [8], [9, 5, 6]))
