@@ -43,7 +43,7 @@ class PostOffice:
             user_box = self.boxes[recipient]
         except KeyError as exc:
             raise KeyError("recipient not found") from exc
-        self.message_id = self.message_id + 1
+        
         message_details = {
             'id': self.message_id,
             'body': message_body,
@@ -51,6 +51,7 @@ class PostOffice:
             'unread': True,
             'title':message_title
         }
+        self.message_id = self.message_id + 1
         if urgent:
             user_box.insert(0, message_details)
         else:
