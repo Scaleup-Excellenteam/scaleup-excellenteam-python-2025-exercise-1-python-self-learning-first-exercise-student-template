@@ -57,7 +57,7 @@ class PostOffice:
             user_box.append(message_details)
         return self.message_id
 
-    def read_inbox(self,user_name,n=0):
+    def read_inbox(self, user_name, n=0):
         """Retrieve unread messages from a user's inbox and mark them as read.
 
         :param str user_name: The username whose inbox is being accessed.
@@ -87,7 +87,7 @@ class PostOffice:
 
         return read_messages
 
-    def search_inbox(self,user_name,string):
+    def search_inbox(self, user_name, string):
         """Search for messages containing a specific substring in a user's inbox.
 
         :param str user_name: The username whose inbox is being searched.
