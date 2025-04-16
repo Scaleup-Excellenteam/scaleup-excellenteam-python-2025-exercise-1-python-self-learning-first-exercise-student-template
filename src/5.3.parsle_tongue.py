@@ -19,7 +19,7 @@ def parsle_tongue():
     letters ending with '!'. Uses a buffer to store matching characters
     and yields valid messages.
     """
-    buffer = ""
+    buffer = []
     path = os.path.abspath('./logo.jpg')
 
     try:
