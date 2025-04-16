@@ -8,6 +8,8 @@ The file is read in chunks of 1024 bytes, and any file errors (e.g., file not fo
 import os
 
 BUFFER_SIZE = 1024
+MIN_MSG_LENGTH = 5
+VALID_CHAR_RANGE = set(string.ascii_lowercase + '!')
 
 def parsle_tongue():
     """
@@ -19,23 +21,18 @@ def parsle_tongue():
     buffer = ""
     path = os.path.abspath('./logo.jpg')
 
-    try:
+   try:
         with open(path, 'rb') as file:
-            chunk = file.read(BUFFER_SIZE)
-            while chunk:
+            while (chunk := file.read(BUFFER_SIZE)):
                 for byte in chunk:
-                    char = chr(byte) if 32 <= byte <= 126 else ''
-
-                    if char.islower() or char == '!':
-                        buffer += char
+                    char = chr(byte)
+                    if char in VALID_CHAR_RANGE:
+                        buffer.append(char)
+                        if len(buffer) >= MIN_MSG_LENGTH and char == '!':
+                            yield ''.join(buffer[:-1])
+                            buffer.clear()
                     else:
-                        buffer = ""
-
-                    if len(buffer) >= 5 and buffer[-1] == '!':
-                        yield buffer[:-1]
-                        buffer = ""
-
-                chunk = file.read(BUFFER_SIZE)
+                        buffer.clear()
 
     except FileNotFoundError:
         print(f"Error: {path} not found")
