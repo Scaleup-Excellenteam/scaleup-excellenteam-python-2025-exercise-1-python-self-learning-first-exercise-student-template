@@ -1,3 +1,7 @@
+"""
+This module processes filtered files from a nested directory structure.
+"""
+
 import os
 
 

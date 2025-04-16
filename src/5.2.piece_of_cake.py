@@ -1,3 +1,7 @@
+"""
+This module provides utility functions for parsing optional items from structured dictionaries.
+"""
+
 def piece_of_cake(prices, optionals=None, **ingredients):
     """
     Calculate the total price of a recipe based on ingredient weights and prices.

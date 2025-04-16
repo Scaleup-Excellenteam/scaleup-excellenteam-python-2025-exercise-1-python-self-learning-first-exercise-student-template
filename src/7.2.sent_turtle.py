@@ -1,3 +1,8 @@
+"""
+This module defines a PostOffice class that allows users to send and receive messages,
+including features such as unread status and urgency handling.
+"""
+
 class PostOffice:
     """A Post Office class. Allows users to message each other."""
 

@@ -1,3 +1,8 @@
+"""
+This module provides a utility function `running_2000`
+which measures the execution time of another function.
+"""
+
 import time
 
 def running_2000(f, *args, **kwargs):

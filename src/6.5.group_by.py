@@ -1,3 +1,6 @@
+"""
+Module that defines a function for grouping items by a given key function.
+"""
 
 def group_by(func, iterable):
     """

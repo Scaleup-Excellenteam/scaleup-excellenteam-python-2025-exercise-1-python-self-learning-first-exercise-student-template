@@ -1,3 +1,9 @@
+"""
+This module contains the implementation of the `interleave` generator,
+which yields items from multiple iterables in round-robin order
+until all are exhausted.
+"""
+
 def interleave(*iterables):
     """
     Yield elements from multiple iterables in an interleaved (round-robin) fashion.

@@ -1,5 +1,9 @@
-from PIL import Image
+"""
+Module for decoding a hidden message from an image using pixel positions.
+"""
+
 import os
+from PIL import Image
 
 def remember_remember(path):
     """

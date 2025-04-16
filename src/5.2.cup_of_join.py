@@ -1,3 +1,7 @@
+"""
+This module provides a function to join multiple lists with optional separators.
+"""
+
 _sentinel = object()  # Unique marker to detect if 'sep' was explicitly provided
 
 def cup_of_join(*lists, sep=_sentinel):

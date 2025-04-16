@@ -1,3 +1,8 @@
+"""
+This module provides a function `long_cat_is_long`
+that appends a very long vertical line to a given cat drawing.
+"""
+
 def long_cat_is_long(text):
     """
     Process a string to count the length of each word.

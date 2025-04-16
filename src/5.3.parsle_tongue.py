@@ -1,3 +1,8 @@
+"""
+This module contains a generator that extracts secret words
+hidden in binary files using a regex pattern.
+"""
+
 import re
 import os
 
@@ -43,4 +48,3 @@ def parsle_tongue():
 if __name__ == '__main__':
     for word in parsle_tongue():
         print(word)
-

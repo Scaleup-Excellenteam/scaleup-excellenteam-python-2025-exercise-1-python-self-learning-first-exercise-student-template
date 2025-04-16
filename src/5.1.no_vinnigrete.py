@@ -1,3 +1,7 @@
+"""
+Module for processing vinaigrette ingredients and printing them.
+"""
+
 from datetime import datetime, timedelta  # For handling dates and calculating differences
 import random  # For generating a random number
 
