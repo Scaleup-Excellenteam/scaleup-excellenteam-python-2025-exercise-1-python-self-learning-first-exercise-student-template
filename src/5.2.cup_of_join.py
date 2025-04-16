@@ -19,8 +19,7 @@ def cup_of_join(*args, sep:str = "")->List:
     :param sep: seperator to add between lists
     :return: flatten list of lists with sep between each list
     """
-    if not args:
-        return None
+
 
     result = []
 
