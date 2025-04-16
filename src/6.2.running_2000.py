@@ -14,10 +14,11 @@ def running_2000(func,*args,**kwargs):
     start = time.perf_counter()
     try:
         func(*args,**kwargs)
+        return time.perf_counter() - start
     except ArgumentError as e:
-        print(e.message)
-        return None
-    return time.perf_counter() - start
+        raise ArgumentError(f"ArgumentError occurred while calling {func._name_}: {e}")
+        
+    
 
 if __name__ == '__main__':
     print(running_2000(print, "hello world"))
