@@ -1,4 +1,4 @@
-def get_recipe_price(prices, optionals=None, **ingredients):
+def piece_of_cake(prices, optionals=None, **ingredients):
     """
     Calculate the total price of a recipe based on ingredient weights and prices.
 
@@ -32,4 +32,4 @@ def get_recipe_price(prices, optionals=None, **ingredients):
     return int(total_price)
 
 if __name__ == '__main__':
-    print(get_recipe_price({'chocolate': 18, 'milk': 8}, chocolate=200, milk=100))
+    print(piece_of_cake({'chocolate': 18, 'milk': 8}, chocolate=200, milk=100))

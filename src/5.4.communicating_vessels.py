@@ -20,6 +20,9 @@ def interleave(*iterables):
             # Stop if any iterator is exhausted
             break
 
+# This is the name the test expects
+generator_interleave = interleave
+
 if __name__ == '__main__':
-    for item in interleave('abc', [1, 2, 3], ('!', '@', '#')):
+    for item in generator_interleave('abc', [1, 2, 3], ('!', '@', '#')):
         print(item, end=' ')

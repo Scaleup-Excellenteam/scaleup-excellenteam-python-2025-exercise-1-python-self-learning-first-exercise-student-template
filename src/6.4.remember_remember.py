@@ -1,6 +1,6 @@
 from PIL import Image
 
-def decode_message(path):
+def remember_remember(path):
     """
     Decode a hidden message from an image by scanning black pixels.
 
@@ -36,4 +36,4 @@ def decode_message(path):
 
 if __name__ == '__main__':
 
-    print(decode_message("resources/code.png"))
+    print(remember_remember("resources/code.png"))

@@ -1,4 +1,4 @@
-def count_words(text):
+def long_cat_is_long(text):
     """
     Process a string to count the length of each word.
 
@@ -27,5 +27,5 @@ if __name__ == '__main__':
             And radio operates exactly the same way: you send signals here, they receive them there.
             The only difference is that there is no cat.
             """
-    result = count_words(text)
+    result = long_cat_is_long(text)
     print(result)

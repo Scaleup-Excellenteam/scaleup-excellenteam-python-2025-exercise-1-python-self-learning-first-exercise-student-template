@@ -1,4 +1,5 @@
-def join(*lists, sep='-'):
+def cup_of_join(*lists, sep='-'):
+
     """
     Join multiple lists into a single list, inserting a separator between each original list.
 
@@ -27,5 +28,5 @@ def join(*lists, sep='-'):
     return new_lst
 
 if __name__ == '__main__':
-    print(join([1, 2, 30], [7, 8], [1], sep='#'))
-    print(join([1, 2], [8], [9, 5, 6]))
+    print(cup_of_join([1, 2, 30], [7, 8], [1], sep='#'))
+    print(cup_of_join([1, 2], [8], [9, 5, 6]))
