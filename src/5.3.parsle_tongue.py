@@ -21,7 +21,7 @@ def parsle_tongue():
     buffer = ""
     path = os.path.abspath('./logo.jpg')
 
-   try:
+    try:
         with open(path, 'rb') as file:
             while (chunk := file.read(BUFFER_SIZE)):
                 for byte in chunk:
