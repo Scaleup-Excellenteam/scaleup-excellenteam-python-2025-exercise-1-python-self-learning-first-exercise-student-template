@@ -19,7 +19,8 @@ def remember_remember(path):
         str: The extracted message, or None if the file is not found.
     """
     try:
-        with img = Image.open(path).convert('L'):
+        with Image.open(path) as img:  
+            img = img.convert('L')  
             width, height = img.size
             message = []
     
