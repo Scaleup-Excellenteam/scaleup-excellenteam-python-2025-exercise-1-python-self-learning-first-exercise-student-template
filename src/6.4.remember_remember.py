@@ -1,39 +1,36 @@
 from PIL import Image
 import os
 
+BLACK = (0, 0, 0)
+DEFAULT_IMAGE_PATH = "src/code.png"
+
 def remember_remember(image_path):
     """
     Decodes a hidden message in a PNG image based on black pixel row indices.
-    Returns the message, or None if the image can't be opened.
+    Returns the message as a string.
+    Raises exceptions if the file doesn't exist or can't be opened.
     """
     if not os.path.isfile(image_path):
-        print(f"Image file not found: {image_path}")
-        return None
+        raise FileNotFoundError(f"Image file not found: {image_path}")
 
-    try:
-        image = Image.open(image_path)
-    except Exception as err:
-        print(f"Failed to open image: {err}")
-        return None
-
-    msg_chars = []
+    image = Image.open(image_path)
     w, h = image.size
     pix = image.load()
 
-    for col in range(w):
-        for row in range(h):
-            r, g, b = pix[col, row][:3]
-            if (r, g, b) == (0, 0, 0):
-                msg_chars.append(chr(row))
-                break
+    msg_chars = [
+        chr(row)
+        for col in range(w)
+        for row in range(h)
+        if pix[col, row][:3] == BLACK
+        and not any(pix[col, r][:3] == BLACK for r in range(row))  # only first black per column
+    ]
 
     return ''.join(msg_chars)
 
 
 if __name__ == "__main__":
-    path = "src/code.png"
-    decoded = remember_remember(path)
-    if decoded:
+    try:
+        decoded = remember_remember(DEFAULT_IMAGE_PATH)
         print("Decoded message:", decoded)
-    else:
-        print("No message decoded.")
+    except Exception as e:
+        print(f"Error: {e}")
