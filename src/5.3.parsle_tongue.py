@@ -1,42 +1,41 @@
 import os
 
+SECRET_LENGTH = 5
+SECRET_SUFFIX = '!'
+SECRET_PATH = "secret_message_file.txt"
+
 def extract_secret_messages(file_path):
     """
-    Reads a file and extracts secret messages: words with length >= 5 and ending with '!'.
+    Extracts secret messages: words with length >= SECRET_LENGTH and ending with SECRET_SUFFIX.
     Returns:
         - None if file not found
         - [] if file is empty or contains no valid secret words
-        - list of words (without '!') otherwise
+        - list of words (without suffix) otherwise
     """
     if not os.path.exists(file_path):
-        print(f"Error: The file '{file_path}' was not found.")
         return None
 
     messages = []
 
-    with open(file_path, 'rb') as file:
-        content = file.read()
-        if not content.strip():
-            print("The file is empty.")
-            return []
-
-        chunk_text = content.decode('utf-8', errors='ignore')
-        words = chunk_text.split()
-
-        for word in words:
-            if len(word) >= 5 and word.endswith('!'):
-                messages.append(word[:-1])  # remove the '!'
+    try:
+        with open(file_path, 'r', encoding='utf-8', errors='ignore') as file:
+            has_content = False
+            for line in file:
+                if line.strip():
+                    has_content = True
+                for word in line.split():
+                    if len(word) >= SECRET_LENGTH and word.endswith(SECRET_SUFFIX):
+                        messages.append(word[:-1])
+            if not has_content:
+                return []
+    except Exception:
+        return None
 
     return messages
 
 
 def parsle_tongue():
-    """
-    Wrapper function expected by the test.
-    Assumes 'secret_message_file.txt' is in the current working directory.
-    """
-    return extract_secret_messages("secret_message_file.txt")
-
+    return extract_secret_messages(SECRET_PATH)
 
 
 if __name__ == "__main__":
