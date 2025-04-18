@@ -66,13 +66,13 @@ class PostOffice:
 
 # This block will only run when the script is executed directly, not when imported
 if __name__ == '__main__':
-    # Testing the PostOffice class
-    post_office = PostOffice()
+    # Initialize with users
+    post_office = PostOffice(users=["john_doe", "alice_smith"])
 
     # Send some messages
-    post_office.send_message("john_doe", "Meeting Tomorrow", "Let's meet tomorrow at 10 AM.")
-    post_office.send_message("john_doe", "Lunch Plans", "Do you want to grab lunch today?")
-    post_office.send_message("alice_smith", "Hello", "Hi Alice, how are you?")
+    post_office.send_message("alice_smith", "john_doe", "Meeting Tomorrow", "Let's meet tomorrow at 10 AM.")
+    post_office.send_message("alice_smith", "john_doe", "Lunch Plans", "Do you want to grab lunch today?")
+    post_office.send_message("john_doe", "alice_smith", "Hello", "Hi Alice, how are you?")
 
     # Read the inbox for john_doe
     print("John Doe's inbox:")
