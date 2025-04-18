@@ -1,7 +1,7 @@
 def cup_of_join(*lists, sep=None):
     """
     Combines multiple lists into one.
-    If 'sep' is given, adds it after each list (even if empty), including after the last.
+    If 'sep' is given, adds it between each list (even if empty), not after the last.
     If no lists are given, returns None.
     """
     if len(lists) == 0:
@@ -9,9 +9,9 @@ def cup_of_join(*lists, sep=None):
 
     merged = []
 
-    for group in lists:
+    for i, group in enumerate(lists):
         merged.extend(group)
-        if sep is not None:
+        if sep is not None and i < len(lists) - 1:
             merged.append(sep)
 
     return merged
