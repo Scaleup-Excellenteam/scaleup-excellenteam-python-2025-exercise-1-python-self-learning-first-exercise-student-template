@@ -63,42 +63,46 @@ class PostOffice:
         return self.message_id
 
 
-    def read_inbox(self, user, number=0):
-        """
-        Reads messages from a user's inbox, marking them as read.
+   def read_inbox(self, user, number=0):
+    """
+    Reads messages from a user's inbox, marking them as read.
 
-        :param str user: The user whose inbox is being accessed.
-        :param int number: The number of messages to read. If 0, reads all messages.
+    :param str user: The user whose inbox is being accessed.
+    :param int number: The number of messages to read. If 0, reads all messages.
 
-        :return: A list of messages read from the user's inbox.
-        :rtype: list
-        """
-        if user not in self.boxes:
-            print("User not found")
-            return []
+    :return: A list of messages read from the user's inbox.
+    :rtype: list
+    :raises ValueError: If the user is not found.
+    """
+    try:
         box = self.boxes[user]
-        if number == 0 or number > len(box):
-            number = len(box)
-        for i in range(number):
-            box[i]['unread'] = False
-        return box[:number]
+    except KeyError:
+        raise ValueError("User not found")
+    if number == 0 or number > len(box):
+        number = len(box)
+    for i in range(number):
+        box[i]['unread'] = False
+    return box[:number]
 
 
     def search_inbox(self, user, str_search):
-        """
-        Searches a user's inbox for messages containing the specified string.
+    """
+    Searches a user's inbox for messages containing the specified string.
 
-        :param str user: The user whose inbox is being searched.
-        :param str str_search: The search term.
+    :param str user: The user whose inbox is being searched.
+    :param str str_search: The search term.
 
-        :return: A list of messages containing the string.
-        :rtype: list
-        """
-        if user not in self.boxes:
-            print("User not found")
-            return []
-        str_search = str_search.lower()
-        return [
-            msg for msg in self.boxes[user]
-            if str_search in msg['body'].lower() or str_search in msg['title'].lower()
-        ]
+    :return: A list of messages containing the string.
+    :rtype: list
+    :raises ValueError: If the user is not found.
+    """
+    try:
+        inbox = self.boxes[user]
+    except KeyError:
+        raise ValueError("User not found")
+
+    str_search = str_search.lower()
+    return [
+        msg for msg in inbox
+        if str_search in msg['body'].lower() or str_search in msg['title'].lower()
+    ]
