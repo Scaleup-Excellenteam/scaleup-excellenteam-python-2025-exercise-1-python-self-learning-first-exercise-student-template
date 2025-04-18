@@ -1,36 +1,21 @@
+from itertools import zip_longest
+
 def interleave(*iterables):
     """
-    Function to interleave multiple iterables into a single list.
-    This version returns the result as a list.
+    Interleaves multiple iterables using zip_longest and flattens the result.
+    Returns a list, skipping None values.
     """
-    combined = []
-    if len(iterables) == 0:
-        return combined
-
-    longest = max(len(seq) for seq in iterables)
-
-    for idx in range(longest):
-        for seq in iterables:
-            if idx < len(seq):
-                combined.append(seq[idx])
-
-    return combined
-
+    return [item for group in zip_longest(*iterables) for item in group if item is not None]
 
 def generator_interleave(*iterables):
     """
-    Generator version of the interleave function.
-    Yields elements from the iterables one by one.
+    Generator version using zip_longest.
+    Yields items one by one, skipping None values.
     """
-    if len(iterables) == 0:
-        return
-
-    limit = max(len(item) for item in iterables)
-
-    for pos in range(limit):
-        for item in iterables:
-            if pos < len(item):
-                yield item[pos]
+    for group in zip_longest(*iterables):
+        for item in group:
+            if item is not None:
+                yield item
 
 
 if __name__ == "__main__":
