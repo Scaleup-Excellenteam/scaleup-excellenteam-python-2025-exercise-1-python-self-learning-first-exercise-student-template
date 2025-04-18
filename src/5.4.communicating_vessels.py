@@ -1,3 +1,4 @@
+from itertools import zip_longest
 """
 Module: interleave_utils
 This module provides functions to interleave elements from multiple iterables.
@@ -36,25 +37,18 @@ def generator_interleave(*input_iter):
 
 def interleave(*input_iter):
     """
-        Interleaves multiple iterables and returns a list with elements from all,
-        including remaining elements from the longest iterable.
+    Interleaves multiple iterables and returns a list with elements from all,
+    including remaining elements from the longest iterable.
 
-        Returns:
-            A list of elements interleaved from the input iterables. Any remaining elements from
-            the longer iterables are appended at the end in order.
-        """
+    Returns:
+        A list of elements interleaved from the input iterables. Any remaining
+        elements from the longer iterables are appended at the end in order.
+    """
     if not input_iter:
         return []
-    result = []
-    for items in zip(*input_iter):
-        result.extend(items)
-    min_len = min(map(len, input_iter))
-    max_len = max(map(len, input_iter))
-    for i in range(min_len, max_len):
-        for it in input_iter:
-            if i < len(it):
-                result.append(it[i])
-    return result
+    placeholder = object()
+    zipped = zip_longest(*input_iter, fillvalue=placeholder)
+    return [x for group in zipped for x in group if x is not placeholder]
 
 
 if __name__ == "__main__":
