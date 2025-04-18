@@ -1,21 +1,14 @@
+import string
+
 def long_cat_is_long(text):
-    # Replace punctuation with spaces and convert to lowercase
-    filtered = []
-    for ch in text:
-        if ch.isalpha() or ch.isspace():
-            filtered.append(ch)
-        else:
-            filtered.append(' ')
-    
-    cleaned = ''.join(filtered).lower()
-    tokens = cleaned.split()
-
-    # Build a dictionary mapping each word to its length
-    lengths = {}
-    for word in tokens:
-        lengths[word] = len(word)
-
-    return lengths
+    """
+    Returns a dictionary mapping each word (lowercased) to its length.
+    Punctuation is removed before processing.
+    """
+    translator = str.maketrans(string.punctuation, ' ' * len(string.punctuation))
+    cleaned_text = text.translate(translator).lower()
+    words = cleaned_text.split()
+    return {word: len(word) for word in words}
 
 if __name__ == "__main__":
     sample_text = "Coding is fun! Cats, dogs & birds?"
