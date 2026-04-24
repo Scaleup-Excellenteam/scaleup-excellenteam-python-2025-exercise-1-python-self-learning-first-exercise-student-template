@@ -46,10 +46,10 @@ Here are three bonus exercises about decorators:
 
 ## AI Usage Policy
 
-If you use an AI assistant for these exercises:
+When you use an AI assistant for these exercises:
 
 - Your **first prompt** must be the full contents of `AI_RULES.md`.
-- You must **hand in all AI conversations** alongside your submission.
+- Upload all AI conversations as **PDF files** to a folder called `ai_conversations/` in your repository. Any filename is acceptable. At least one conversation file must be submitted.
 
 ## Naming Conventions
 
