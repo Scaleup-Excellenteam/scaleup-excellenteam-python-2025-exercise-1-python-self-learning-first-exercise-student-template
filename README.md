@@ -62,7 +62,10 @@ In this course you will be required to follow industry standard conventions [Pyt
 For best practices please use examples presented in [PRACTICES.md](PRACTICES.md), if still there is an uncertainty or missing use cases, you are highly encouraged to contact the staff for further clarifications.
 
 ### Branching
-Use the [WORK-INSTRUCTIONS.md](WORK-INSTRUCTIONS) file as your guideline for proper use of Git. For more information, you are encouraged to search online for "[GitHub Workflow Methodology](https://www.youtube.com/watch?v=U_IFGpJDbeU&ab_channel=DevOpsToolkit)."
+Use the [WORK-INSTRUCTIONS.md](WORK-INSTRUCTIONS.md) file as your guideline for proper use of Git. For more information, you are encouraged to search online for "[GitHub Workflow Methodology](https://www.youtube.com/watch?v=U_IFGpJDbeU&ab_channel=DevOpsToolkit)."
+
+### Automated Checks (CI)
+Every pull request triggers automated Pylint and Pytest checks on GitHub. See [GITHUB-CHECKS.md](GITHUB-CHECKS.md) for an explanation of what they do, how to run them locally, and what to do when they fail.
 
 ### Python Environment
 1. Use Python 3.10 as the interpreter.

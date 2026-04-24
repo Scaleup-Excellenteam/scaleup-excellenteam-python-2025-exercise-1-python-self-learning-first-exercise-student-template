@@ -44,25 +44,28 @@ Here are three bonus exercises about decorators:
    - **Filename**: `twice.py`
    - **Decorator name**: `twice`
 
-## How to Hand In
+## AI Usage Policy
 
-- Submit the assignments in the Git repository you created from the supplied link (available in Moodle).
-- Open a **separate pull request** for each exercise and add **“excellenteam-scaleup”** as a reviewer.
-- Paste the links in Moodle.
-- Ensure that only the specific exercise appears in the **diff** section of the pull request.
-  - Always return to the `main`/`master` branch before opening a new branch to avoid including previous exercises.
+If you use an AI assistant for these exercises:
 
-### Naming Conventions
+- Your **first prompt** must be the full contents of `AI_RULES.md`.
+- You must **hand in all AI conversations** alongside your submission.
+
+## Naming Conventions
 
 - **File format**: `<week>.<part>.<exercise_name>.py`
 - The **exercise name** is specified in brackets next to the Hebrew name.
-  - Example: For "זו הדרך", the filename should be **`5.1.thats_the_way.py`**
+  - Example: For “זו הדרך”, the filename should be **`5.1.thats_the_way.py`**
 - The **function inside the file** should match the exercise name:
   - `5.1.thats_the_way.py` should contain `def thats_the_way():`
   - `5.4.communicating_vessels.py` should contain two functions: `def interleaves():` and `def generator_interleaves():`
 - Each exercise should be submitted as a **separate module**, unless the exercises are dependent on each other.
 - Ensure `if __name__ == '__main__':` is included in every file.
 - `.ipynb` file format will **not** be accepted. Only `.py` files are allowed.
+
+## How to Hand In
+
+See [README.md](README.md) for submission instructions and [WORK-INSTRUCTIONS.md](WORK-INSTRUCTIONS.md) for the full Git workflow.
 
 ## Grading
 
